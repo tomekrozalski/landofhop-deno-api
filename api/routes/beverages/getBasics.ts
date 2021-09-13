@@ -1,6 +1,7 @@
 import { RouteParams } from "oak";
 
-import { DEFAULT_LANGUAGE, translate } from "/api/utils/index.ts";
+import { translate } from "/api/utils/translate.ts";
+import { DEFAULT_LANGUAGE } from "/api/utils/constants.ts";
 import { basics } from "/db.ts";
 import type { BasicsOutput } from "./output.d.ts";
 

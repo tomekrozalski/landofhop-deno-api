@@ -1,4 +1,4 @@
-import type { LanguageValue } from "/api/models/common/index.d.ts";
+import type { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
 import {
   AlcoholRelate,
   AlcoholScope,
@@ -9,8 +9,9 @@ import {
   ExtractUnit,
   Fermentation,
   HopRateUnit,
-} from "/api/models/beverage/enums/index.ts";
-import { Aged, IngredientBasic } from "./index.d.ts";
+} from "/api/models/beverage/enums.ts";
+import { Aged } from "./Aged.d.ts";
+import { IngredientBasic } from "./IngredientBasic.d.ts";
 
 export type Brewing = {
   beverageType?: Category;

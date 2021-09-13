@@ -1,6 +1,6 @@
-import type { LanguageValue } from "/api/models/common/index.d.ts";
+import type { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
 
-export default function translate(
+export function translate(
   values: LanguageValue[],
   desiredLanguage: string
 ): LanguageValue {

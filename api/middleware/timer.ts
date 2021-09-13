@@ -1,6 +1,6 @@
 import { Context } from "oak";
 
-async function timer(ctx: Context, next: () => Promise<unknown>) {
+export async function timer(ctx: Context, next: () => Promise<unknown>) {
   const startTime = Date.now();
   await next();
   const endTime = Date.now();
@@ -8,5 +8,3 @@ async function timer(ctx: Context, next: () => Promise<unknown>) {
 
   ctx.response.headers.set("X-Response-Time", `${difference}ms`);
 }
-
-export default timer;

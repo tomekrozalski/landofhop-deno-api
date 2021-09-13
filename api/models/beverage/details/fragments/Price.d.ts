@@ -1,4 +1,4 @@
-import { Currency } from "/api/models/beverage/enums/index.ts";
+import { Currency } from "/api/models/beverage/enums.ts";
 
 export type Price = {
   date: Date;

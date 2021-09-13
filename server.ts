@@ -2,7 +2,8 @@ import { Application } from "oak";
 import "dotenv";
 
 import router from "./api/routes/routes.ts";
-import { errorHandling, timer } from "./api/middleware/index.ts";
+import { errorHandling } from "./api/middleware/errorHandling.ts";
+import { timer } from "./api/middleware/timer.ts";
 import "./db.ts";
 
 const app = new Application();

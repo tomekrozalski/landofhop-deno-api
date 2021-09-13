@@ -1,4 +1,6 @@
-import { Editorial, Label, Producer } from "./index.d.ts";
+import { Editorial } from "./Editorial.d.ts";
+import { Label } from "./Label.d.ts";
+import { Producer } from "./Producer.d.ts";
 
 export type Beverage = {
   id: string;

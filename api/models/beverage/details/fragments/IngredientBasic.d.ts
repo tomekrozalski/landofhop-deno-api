@@ -1,5 +1,5 @@
-import type { LanguageValue } from "/api/models/common/index.d.ts";
-import { IngredientType } from "/api/models/beverage/enums/index.ts";
+import type { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
+import { IngredientType } from "/api/models/beverage/enums.ts";
 
 export type IngredientBasic = {
   id: string;

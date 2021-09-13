@@ -1,4 +1,5 @@
-import { IngredientBasic, IngredientDescription } from "./index.d.ts";
+import { IngredientBasic } from "./IngredientBasic.d.ts";
+import { IngredientDescription } from "./IngredientDescription.d.ts";
 
 export type IngredientsInfo = {
   description?: IngredientDescription[];

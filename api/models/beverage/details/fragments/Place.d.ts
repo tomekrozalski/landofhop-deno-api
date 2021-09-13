@@ -1,4 +1,4 @@
-import { LanguageValue } from "/api/models/common/index.d.ts";
+import { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
 
 export type Place = {
   city?: LanguageValue[];

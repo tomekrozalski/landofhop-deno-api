@@ -1,4 +1,4 @@
-import { TemperatureUnit } from "/api/models/beverage/enums/index.ts";
+import { TemperatureUnit } from "/api/models/beverage/enums.ts";
 
 export type Impressions = {
   bitterness?: number;

@@ -3,7 +3,7 @@ import {
   ContainerMaterial,
   ContainerType,
   ContainerUnit,
-} from "/api/models/beverage/enums/index.ts";
+} from "/api/models/beverage/enums.ts";
 
 export type Container = {
   color: ContainerColor;

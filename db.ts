@@ -1,6 +1,6 @@
 import { MongoClient } from "mongo";
 import { Basics as BasicsTypes } from "/api/models/beverage/Basics.d.ts";
-import { Beverage as BeverageTypes } from "/api/models/beverage/details/index.d.ts";
+import { Beverage as BeverageTypes } from "/api/models/beverage/details/Beverage.d.ts";
 
 const client = new MongoClient();
 

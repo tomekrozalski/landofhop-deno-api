@@ -1,17 +1,15 @@
-import type { LanguageValue } from "/api/models/common/index.d.ts";
+import type { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
 import {
   AlcoholScope,
   Category,
   Clarity,
   Fermentation,
-} from "/api/models/beverage/enums/index.ts";
-import {
-  Aged,
-  IngredientBasic,
-  Institution,
-  Place,
-  Price,
-} from "./fragments/index.d.ts";
+} from "/api/models/beverage/enums.ts";
+import { Aged } from "./fragments/Aged.d.ts";
+import { IngredientBasic } from "./fragments/IngredientBasic.d.ts";
+import { Institution } from "./fragments/Institution.d.ts";
+import { Place } from "./fragments/Place.d.ts";
+import { Price } from "./fragments/Price.d.ts";
 
 export type EditorialGeneral = {
   cooperation?: Institution[];
