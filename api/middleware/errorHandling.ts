@@ -1,6 +1,6 @@
 import { Context, isHttpError, Status } from "oak";
 
-async function errorHandling(ctx: Context, next: () => Promise<unknown>) {
+async function errorHandling(_: Context, next: () => Promise<unknown>) {
   try {
     await next();
   } catch (err) {

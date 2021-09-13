@@ -9,7 +9,7 @@ async function getBasics(params: RouteParams) {
   const skip = params?.skip ?? "0";
   const limit = params?.limit ?? "1";
 
-  let translatedValues: BasicsOutput[] = [];
+  const translatedValues: BasicsOutput[] = [];
 
   await basics
     .find()
