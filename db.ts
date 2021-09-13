@@ -1,4 +1,5 @@
-import { MongoClient } from "https://deno.land/x/mongo@v0.25.0/mod.ts";
+import { MongoClient } from "mongo";
+import { Beverage as BeverageTypes } from "/api/models/beverage/index.d.ts";
 
 const client = new MongoClient();
 
@@ -20,6 +21,6 @@ await client.connect({
 });
 
 const db = client.database("landofhop");
-const beverages = db.collection<{ badge: string }>("beverages");
+const beverages = db.collection<BeverageTypes>("beverages");
 
 export { beverages };

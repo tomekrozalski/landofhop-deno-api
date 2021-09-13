@@ -1,0 +1,47 @@
+import type { LanguageValue } from "/api/models/common/index.d.ts";
+import {
+  AlcoholRelate,
+  AlcoholScope,
+  AlcoholUnit,
+  Category,
+  ExpirationDateUnit,
+  ExtractRelate,
+  ExtractUnit,
+  Fermentation,
+  HopRateUnit,
+} from "/api/models/beverage/enums/index.ts";
+import { Aged, IngredientBasic } from "./index.d.ts";
+
+export type Brewing = {
+  beverageType?: Category;
+  fermentation?: Fermentation[];
+  extract?: {
+    relate: ExtractRelate;
+    unit: ExtractUnit;
+    value: number;
+  };
+  alcohol?: {
+    relate: AlcoholRelate;
+    unit: AlcoholUnit;
+    value: number;
+    scope?: AlcoholScope;
+  };
+  filtration?: boolean;
+  pasteurization?: boolean;
+  aged?: Aged[];
+  style?: LanguageValue[];
+  isDryHopped?: boolean;
+  dryHopped?: {
+    hops: {
+      type: IngredientBasic[];
+    };
+  };
+  hopRate?: {
+    unit: HopRateUnit;
+    value: number;
+  };
+  expirationDate?: {
+    value: number;
+    unit: ExpirationDateUnit;
+  };
+};

@@ -1,11 +1,9 @@
-import { beverages } from "../../../db.ts";
+import { beverages } from "/db.ts";
 
 async function getBasics() {
-  const values = await beverages.findOne();
+  const value = await beverages.findOne();
 
-  return {
-    data: values,
-  };
+  return value;
 }
 
 export default getBasics;

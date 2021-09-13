@@ -1,8 +1,4 @@
-import {
-  Context,
-  isHttpError,
-  Status,
-} from "https://deno.land/x/oak@v9.0.0/mod.ts";
+import { Context, isHttpError, Status } from "oak";
 
 async function errorHandling(ctx: Context, next: () => Promise<unknown>) {
   try {

@@ -1,5 +1,5 @@
-import { Application } from "https://deno.land/x/oak@v9.0.0/mod.ts";
-import "https://deno.land/x/dotenv@v3.0.0/load.ts";
+import { Application } from "oak";
+import "dotenv";
 
 import router from "./api/routes/routes.ts";
 import { errorHandling, timer } from "./api/middleware/index.ts";
