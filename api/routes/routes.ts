@@ -3,12 +3,8 @@ import getBasics from "./beverages/getBasics.ts";
 
 const router = new Router();
 
-router
-  .get("/api/quote", (ctx) => {
-    ctx.response.body = { test: "hm" };
-  })
-  .get("/api/dwa", async (ctx) => {
-    ctx.response.body = await getBasics();
-  });
+router.get("/basics/:language?/:skip?/:limit?", async (ctx) => {
+  ctx.response.body = await getBasics(ctx.params);
+});
 
 export default router;

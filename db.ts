@@ -1,5 +1,6 @@
 import { MongoClient } from "mongo";
-import { Beverage as BeverageTypes } from "/api/models/beverage/index.d.ts";
+import { Basics as BasicsTypes } from "/api/models/beverage/Basics.d.ts";
+import { Beverage as BeverageTypes } from "/api/models/beverage/details/index.d.ts";
 
 const client = new MongoClient();
 
@@ -21,6 +22,7 @@ await client.connect({
 });
 
 const db = client.database("landofhop");
+const basics = db.collection<BasicsTypes>("basics");
 const beverages = db.collection<BeverageTypes>("beverages");
 
-export { beverages };
+export { basics, beverages };

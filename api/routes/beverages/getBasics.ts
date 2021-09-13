@@ -1,9 +1,32 @@
-import { beverages } from "/db.ts";
+import { RouteParams } from "oak";
 
-async function getBasics() {
-  const value = await beverages.findOne();
+import { DEFAULT_LANGUAGE, translate } from "/api/utils/index.ts";
+import { basics } from "/db.ts";
+import type { BasicsOutput } from "./output.d.ts";
 
-  return value;
+async function getBasics(params: RouteParams) {
+  const language = params?.language ?? DEFAULT_LANGUAGE;
+  const skip = params?.skip ?? "0";
+  const limit = params?.limit ?? "1";
+
+  let translatedValues: BasicsOutput[] = [];
+
+  await basics
+    .find()
+    .skip(+skip)
+    .limit(+limit)
+    .forEach(({ _id, brand, name, ...rest }) => {
+      translatedValues.push({
+        name: translate(name, language),
+        brand: {
+          ...brand,
+          name: translate(brand.name, language),
+        },
+        ...rest,
+      });
+    });
+
+  return translatedValues;
 }
 
 export default getBasics;
