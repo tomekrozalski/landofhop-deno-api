@@ -1,10 +1,10 @@
+import { beverages } from "../../../db.ts";
+
 async function getBasics() {
+  const values = await beverages.findOne();
+
   return {
-    data: [
-      {
-        movieId: 1,
-      },
-    ],
+    data: values,
   };
 }
 
