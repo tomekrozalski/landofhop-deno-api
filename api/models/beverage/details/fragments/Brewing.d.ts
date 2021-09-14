@@ -3,7 +3,6 @@ import {
   AlcoholRelate,
   AlcoholScope,
   AlcoholUnit,
-  Category,
   ExpirationDateUnit,
   ExtractRelate,
   ExtractUnit,
@@ -14,7 +13,6 @@ import { Aged } from "./Aged.d.ts";
 import { IngredientBasic } from "./IngredientBasic.d.ts";
 
 export type Brewing = {
-  beverageType?: Category;
   fermentation?: Fermentation[];
   extract?: {
     relate: ExtractRelate;

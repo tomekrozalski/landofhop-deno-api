@@ -1,14 +1,14 @@
-import { RouteParams } from "oak";
+import { RouterContext } from "oak";
 
 import { translate } from "/api/utils/translate.ts";
 import { DEFAULT_LANGUAGE } from "/api/utils/constants.ts";
 import { basics } from "/db.ts";
-import type { BasicsOutput } from "./output.d.ts";
+import type { BasicsOutput } from "./BasicsOutput.d.ts";
 
-async function getBasics(params: RouteParams) {
-  const language = params?.language ?? DEFAULT_LANGUAGE;
-  const skip = params?.skip ?? "0";
-  const limit = params?.limit ?? "1";
+export async function getBasics(ctx: RouterContext) {
+  const language = ctx.params?.language ?? DEFAULT_LANGUAGE;
+  const skip = ctx.params?.skip ?? "0";
+  const limit = ctx.params?.limit ?? "1";
 
   const translatedValues: BasicsOutput[] = [];
 
@@ -27,7 +27,5 @@ async function getBasics(params: RouteParams) {
       });
     });
 
-  return translatedValues;
+  ctx.response.body = translatedValues;
 }
-
-export default getBasics;

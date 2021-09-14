@@ -1,7 +1,6 @@
 import type { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
 import {
   AlcoholScope,
-  Category,
   Clarity,
   Fermentation,
 } from "/api/models/beverage/enums.ts";
@@ -20,7 +19,6 @@ export type EditorialGeneral = {
 };
 
 export type EditorialBrewing = {
-  beverageType?: Category;
   fermentation?: Fermentation[];
   alcohol?: {
     scope?: AlcoholScope;

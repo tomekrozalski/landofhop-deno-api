@@ -39,12 +39,6 @@ export enum AlcoholUnit {
   degree = "degree",
 }
 
-export enum Category {
-  beer = "beer",
-  radler = "radler",
-  other = "other",
-}
-
 export enum Clarity {
   crystalline = "crystalline",
   clear = "clear",
