@@ -10,10 +10,10 @@ export type BasicsOutput = {
   };
   name: LanguageValue;
   coverImage?: {
-    height?: number;
-    width?: number;
-    outlines?: string;
+    height: number;
+    width: number;
+    outline: string;
   };
   containerType: ContainerType;
-  added: Date;
+  added: string;
 };

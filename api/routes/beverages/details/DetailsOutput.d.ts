@@ -14,6 +14,7 @@ import {
 } from "/api/models/beverage/enums.ts";
 import { Aged } from "/api/models/beverage/details/fragments/Aged.d.ts";
 import { Container } from "/api/models/beverage/details/fragments/Container.d.ts";
+import { IngredientBasic } from "/api/models/beverage/details/fragments/IngredientBasic.d.ts";
 import { Price } from "/api/models/beverage/details/fragments/Price.d.ts";
 import { Tale } from "/api/models/beverage/details/fragments/Tale.d.ts";
 
@@ -34,14 +35,14 @@ export type DetailsOutput = {
   };
   brand: InsitutionOutput;
   cooperation?: {
-    label?: LanguageValue[];
-    producer?: LanguageValue[];
-    editorial?: LanguageValue[];
+    label?: InsitutionOutput[];
+    producer?: InsitutionOutput[];
+    editorial?: InsitutionOutput[];
   };
   contract?: {
-    label?: LanguageValue;
-    producer?: LanguageValue;
-    editorial?: LanguageValue;
+    label?: InsitutionOutput;
+    producer?: InsitutionOutput;
+    editorial?: InsitutionOutput;
   };
   isContract?: {
     label?: boolean;
@@ -51,15 +52,15 @@ export type DetailsOutput = {
   place?: {
     label?: {
       city: LanguageValue;
-      country: LanguageValue;
+      country: string;
     };
     producer?: {
       city: LanguageValue;
-      country: LanguageValue;
+      country: string;
     };
     editorial?: {
       city: LanguageValue;
-      country: LanguageValue;
+      country: string;
     };
   };
   remark?: {
@@ -136,9 +137,9 @@ export type DetailsOutput = {
     editorial?: boolean;
   };
   dryHopped?: {
-    label?: LanguageValue[];
-    producer?: LanguageValue[];
-    editorial?: LanguageValue[];
+    label?: IngredientBasic[];
+    producer?: IngredientBasic[];
+    editorial?: IngredientBasic[];
   };
   hopRate?: {
     label?: {
@@ -233,10 +234,8 @@ export type DetailsOutput = {
   photos?: {
     cap?: boolean;
     gallery?: number;
-    outlines?: {
-      gallery?: string;
-    };
+    outline?: string;
   };
-  added: Date;
-  updated?: Date;
+  added: string;
+  updated?: string;
 };

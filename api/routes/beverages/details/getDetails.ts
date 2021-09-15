@@ -1,10 +1,11 @@
 import { RouterContext } from "oak";
 
+import { AppLanguage } from "/api/utils/enums/AppLanguage.enum.ts";
 import { beverages } from "/db.ts";
 import { normalizer } from "./normalizer.ts";
 
 export async function getDetails(ctx: RouterContext) {
-  const language = ctx.params.language as string;
+  const language = ctx.params.language as AppLanguage;
   const shortId = ctx.params.shortId as string;
   const brand = ctx.params.brand as string;
   const name = ctx.params.name as string;

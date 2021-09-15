@@ -28,11 +28,7 @@ export type EditorialBrewing = {
   aged?: Aged[];
   style?: LanguageValue[];
   isDryHopped?: boolean;
-  dryHopped?: {
-    hops: {
-      type: IngredientBasic[];
-    };
-  };
+  dryHopped?: IngredientBasic[];
 };
 
 export type EditorialImpressions = {

@@ -11,9 +11,9 @@ export type Basics = {
   };
   name: LanguageValue[];
   coverImage?: {
-    height?: number;
-    width?: number;
-    outlines?: string;
+    height: number;
+    width: number;
+    outlines: string;
   };
   containerType: ContainerType;
   added: Date;

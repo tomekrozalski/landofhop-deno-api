@@ -30,11 +30,7 @@ export type Brewing = {
   aged?: Aged[];
   style?: LanguageValue[];
   isDryHopped?: boolean;
-  dryHopped?: {
-    hops: {
-      type: IngredientBasic[];
-    };
-  };
+  dryHopped?: IngredientBasic[];
   hopRate?: {
     unit: HopRateUnit;
     value: number;
