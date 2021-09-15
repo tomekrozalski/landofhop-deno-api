@@ -17,6 +17,7 @@ export async function getBasics(ctx: RouterContext) {
 
   await basics
     .find()
+    .sort({ added: -1 })
     .skip(+skip)
     .limit(+limit)
     .forEach(({ _id, added, brand, coverImage, name, ...rest }) => {

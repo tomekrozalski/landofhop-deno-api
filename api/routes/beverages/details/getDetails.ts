@@ -1,8 +1,11 @@
 import { RouterContext } from "oak";
 
 import { AppLanguage } from "/api/utils/enums/AppLanguage.enum.ts";
-import { beverages } from "/db.ts";
-import { normalizer } from "./normalizer.ts";
+import { basics, beverages } from "/db.ts";
+import { normalizer as detailsNormalizer } from "./normalizer.ts";
+import type { DetailsOutput } from "./DetailsOutput.d.ts";
+import type { LinkDataOutput } from "./LinkDataOutput.d.ts";
+import type { AugmentedDetailsOutput } from "./AugmentedDetailsOutput.d.ts";
 
 export async function getDetails(ctx: RouterContext) {
   const language = ctx.params.language as AppLanguage;
@@ -26,7 +29,40 @@ export async function getDetails(ctx: RouterContext) {
     return;
   }
 
-  const formattedValue = normalizer(value, language);
+  const previousBasics: LinkDataOutput[] = [];
+  const nextBasics: LinkDataOutput[] = [];
 
-  ctx.response.body = formattedValue;
+  await basics
+    .find({ added: { $lt: value.added } })
+    .sort({ added: -1 })
+    .limit(1)
+    .forEach(({ badge, brand, shortId }) => {
+      previousBasics.push({
+        badge,
+        brand: brand.badge,
+        shortId,
+      });
+    });
+
+  await basics
+    .find({ added: { $gt: value.added } })
+    .sort({ added: 1 })
+    .limit(1)
+    .forEach(({ badge, brand, shortId }) => {
+      nextBasics.push({
+        badge,
+        brand: brand.badge,
+        shortId,
+      });
+    });
+
+  const formattedDetails: DetailsOutput = detailsNormalizer(value, language);
+
+  const augmentedDetails: AugmentedDetailsOutput = {
+    previous: previousBasics.length ? previousBasics[0] : null,
+    details: formattedDetails,
+    next: nextBasics.length ? nextBasics[0] : null,
+  };
+
+  ctx.response.body = augmentedDetails;
 }

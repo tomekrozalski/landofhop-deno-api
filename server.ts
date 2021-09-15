@@ -1,4 +1,5 @@
 import { Application } from "oak";
+import { oakCors } from "cors";
 import "dotenv";
 
 import router from "./api/routes/routes.ts";
@@ -7,6 +8,7 @@ import { timer } from "./api/middleware/timer.ts";
 import "./db.ts";
 
 const app = new Application();
+app.use(oakCors({ origin: "*" }));
 
 // Middlewares
 app.use(errorHandling);

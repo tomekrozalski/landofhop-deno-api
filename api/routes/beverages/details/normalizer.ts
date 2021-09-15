@@ -43,19 +43,13 @@ export function normalizer(
     brand: formatIntitution(beverage.label.general.brand),
     cooperation: {
       ...(beverage.label.general.cooperation?.length && {
-        label: beverage.label.general.cooperation?.map(({ name }) =>
-          translate(name, desiredLanguage)
-        ),
+        label: beverage.label.general.cooperation?.map(formatIntitution),
       }),
       ...(beverage.producer?.general?.cooperation?.length && {
-        producer: beverage.producer.general.cooperation.map(({ name }) =>
-          translate(name, desiredLanguage)
-        ),
+        producer: beverage.producer.general.cooperation.map(formatIntitution),
       }),
       ...(beverage.editorial?.general?.cooperation?.length && {
-        editorial: beverage.editorial.general.cooperation.map(({ name }) =>
-          translate(name, desiredLanguage)
-        ),
+        editorial: beverage.editorial.general.cooperation.map(formatIntitution),
       }),
     },
     contract: {
