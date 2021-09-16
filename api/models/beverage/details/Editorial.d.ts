@@ -21,7 +21,7 @@ export type EditorialGeneral = {
 export type EditorialBrewing = {
   fermentation?: Fermentation[];
   alcohol?: {
-    scope?: AlcoholScope;
+    scope: AlcoholScope;
   };
   filtration?: boolean;
   pasteurization?: boolean;

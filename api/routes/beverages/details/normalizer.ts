@@ -1,7 +1,8 @@
 import { lodash } from "lodash";
-import format from "format";
+import format from "date-fns/format";
 
 import { translate } from "/api/utils/translate.ts";
+import { deleteIfEmpty } from '/api/utils/deleteIfEmpty.ts';
 import { DateFormat } from "/api/utils/enums/DateFormat.enum.ts";
 import { AppLanguage } from "/api/utils/enums/AppLanguage.enum.ts";
 import { Beverage as BeverageTypes } from "/api/models/beverage/details/Beverage.d.ts";
@@ -439,14 +440,6 @@ export function normalizer(
     }),
   };
 
-  const deleteIfEmpty = (fields: string[]) => {
-    fields.forEach((field) => {
-      if (lodash.isEmpty(lodash.get(formattedObject, field))) {
-        lodash.unset(formattedObject, field);
-      }
-    });
-  };
-
   deleteIfEmpty([
     "series",
     "cooperation",
@@ -482,7 +475,7 @@ export function normalizer(
     "clarity",
     "price",
     "photos",
-  ]);
+  ], formattedObject);
 
   return formattedObject;
 }

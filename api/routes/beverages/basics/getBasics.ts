@@ -1,5 +1,5 @@
 import { RouterContext } from "oak";
-import format from "format";
+import format from "date-fns/format";
 
 import { translate } from "/api/utils/translate.ts";
 import { DEFAULT_LANGUAGE } from "/api/utils/constants.ts";
