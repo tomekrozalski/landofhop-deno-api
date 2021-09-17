@@ -10,7 +10,7 @@ import {
   HopRateUnit,
 } from "/api/models/beverage/enums.ts";
 import { Aged } from "./Aged.d.ts";
-import { IngredientBasic } from "./IngredientBasic.d.ts";
+import { IngredientTag } from "./IngredientTag.d.ts";
 
 export type Brewing = {
   fermentation?: Fermentation[];
@@ -30,7 +30,7 @@ export type Brewing = {
   aged?: Aged[];
   style?: LanguageValue[];
   isDryHopped?: boolean;
-  dryHopped?: IngredientBasic[];
+  dryHopped?: IngredientTag[];
   hopRate?: {
     unit: HopRateUnit;
     value: number;

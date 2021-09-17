@@ -2,7 +2,7 @@ import { lodash } from "lodash";
 import format from "date-fns/format";
 
 import { translate } from "/api/utils/translate.ts";
-import { deleteIfEmpty } from '/api/utils/deleteIfEmpty.ts';
+import { deleteIfEmpty } from "/api/utils/deleteIfEmpty.ts";
 import { DateFormat } from "/api/utils/enums/DateFormat.enum.ts";
 import { AppLanguage } from "/api/utils/enums/AppLanguage.enum.ts";
 import { Beverage as BeverageTypes } from "/api/models/beverage/details/Beverage.d.ts";
@@ -286,29 +286,29 @@ export function normalizer(
         producer: beverage.producer.brewing.expirationDate,
       }),
     },
-    ingredientsDescription: {
-      ...(beverage.label.ingredients?.description && {
+    ingredients: {
+      ...(beverage.label.ingredients?.descriptive && {
         label: translate(
-          beverage.label.ingredients.description,
+          beverage.label.ingredients.descriptive,
           desiredLanguage
         ),
       }),
-      ...(beverage.producer?.ingredients?.description && {
+      ...(beverage.producer?.ingredients?.descriptive && {
         producer: translate(
-          beverage.producer.ingredients.description,
+          beverage.producer.ingredients.descriptive,
           desiredLanguage
         ),
       }),
     },
-    ingredientsList: {
-      ...(beverage.label.ingredients?.list?.length && {
-        label: beverage.label.ingredients.list.map((ingredient) => ({
+    ingredientsTags: {
+      ...(beverage.label.ingredients?.tags?.length && {
+        label: beverage.label.ingredients.tags.map((ingredient) => ({
           ...ingredient,
           name: translate(ingredient.name, desiredLanguage),
         })),
       }),
-      ...(beverage.producer?.ingredients?.list?.length && {
-        producer: beverage.producer.ingredients.list.map((ingredient) => ({
+      ...(beverage.producer?.ingredients?.tags?.length && {
+        producer: beverage.producer.ingredients.tags.map((ingredient) => ({
           ...ingredient,
           name: translate(ingredient.name, desiredLanguage),
         })),
@@ -440,42 +440,45 @@ export function normalizer(
     }),
   };
 
-  deleteIfEmpty([
-    "series",
-    "cooperation",
-    "contract",
-    "isContract",
-    "place",
-    "remark",
-    "tale.producer",
-    "tale",
-    "beverageType",
-    "fermentation",
-    "extract",
-    "alcohol",
-    "filtration",
-    "pasteurization",
-    "isAged",
-    "aged",
-    "style",
-    "isDryHopped",
-    "dryHopped",
-    "hopRate",
-    "expirationDate",
-    "ingredientsDescription",
-    "ingredientsList",
-    "smokedMalt",
-    "bitterness",
-    "sweetness",
-    "fullness",
-    "power",
-    "hoppyness",
-    "temperature",
-    "color",
-    "clarity",
-    "price",
-    "photos",
-  ], formattedObject);
+  deleteIfEmpty(
+    [
+      "series",
+      "cooperation",
+      "contract",
+      "isContract",
+      "place",
+      "remark",
+      "tale.producer",
+      "tale",
+      "beverageType",
+      "fermentation",
+      "extract",
+      "alcohol",
+      "filtration",
+      "pasteurization",
+      "isAged",
+      "aged",
+      "style",
+      "isDryHopped",
+      "dryHopped",
+      "hopRate",
+      "expirationDate",
+      "ingredients",
+      "ingredientsTags",
+      "smokedMalt",
+      "bitterness",
+      "sweetness",
+      "fullness",
+      "power",
+      "hoppyness",
+      "temperature",
+      "color",
+      "clarity",
+      "price",
+      "photos",
+    ],
+    formattedObject
+  );
 
   return formattedObject;
 }

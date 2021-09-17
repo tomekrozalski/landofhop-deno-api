@@ -1,8 +1,8 @@
-import { IngredientBasic } from "./IngredientBasic.d.ts";
-import { IngredientDescription } from "./IngredientDescription.d.ts";
+import { IngredientTag } from "./IngredientTag.d.ts";
+import { IngredientDescriptive } from "./IngredientDescriptive.d.ts";
 
 export type IngredientsInfo = {
-  description?: IngredientDescription[];
-  list?: IngredientBasic[];
+  descriptive?: IngredientDescriptive[];
+  tags?: IngredientTag[];
   smokedMalt?: boolean;
 };

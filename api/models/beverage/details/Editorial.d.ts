@@ -5,7 +5,7 @@ import {
   Fermentation,
 } from "/api/models/beverage/enums.ts";
 import { Aged } from "./fragments/Aged.d.ts";
-import { IngredientBasic } from "./fragments/IngredientBasic.d.ts";
+import { IngredientTag } from "./fragments/IngredientTag.d.ts";
 import { Institution } from "./fragments/Institution.d.ts";
 import { Place } from "./fragments/Place.d.ts";
 import { Price } from "./fragments/Price.d.ts";
@@ -28,7 +28,7 @@ export type EditorialBrewing = {
   aged?: Aged[];
   style?: LanguageValue[];
   isDryHopped?: boolean;
-  dryHopped?: IngredientBasic[];
+  dryHopped?: IngredientTag[];
 };
 
 export type EditorialImpressions = {

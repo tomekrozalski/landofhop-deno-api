@@ -14,7 +14,7 @@ import {
 } from "/api/models/beverage/enums.ts";
 import { Aged } from "/api/models/beverage/details/fragments/Aged.d.ts";
 import { Container } from "/api/models/beverage/details/fragments/Container.d.ts";
-import { IngredientBasic } from "/api/models/beverage/details/fragments/IngredientBasic.d.ts";
+import { IngredientTag } from "/api/models/beverage/details/fragments/IngredientTag.d.ts";
 import { Price } from "/api/models/beverage/details/fragments/Price.d.ts";
 import { Tale } from "/api/models/beverage/details/fragments/Tale.d.ts";
 
@@ -137,9 +137,9 @@ export type DetailsOutput = {
     editorial?: boolean;
   };
   dryHopped?: {
-    label?: IngredientBasic[];
-    producer?: IngredientBasic[];
-    editorial?: IngredientBasic[];
+    label?: IngredientTag[];
+    producer?: IngredientTag[];
+    editorial?: IngredientTag[];
   };
   hopRate?: {
     label?: {
@@ -161,24 +161,26 @@ export type DetailsOutput = {
       unit: ExpirationDateUnit;
     };
   };
-  ingredientsDescription?: {
+  ingredients?: {
     label?: {
       complete: boolean;
       language: string;
-      value: string;
+      list: string[];
     };
     producer?: {
       complete: boolean;
       language: string;
-      value: string;
+      list: string[];
     };
   };
-  ingredientsList?: {
+  ingredientsTags?: {
     label?: {
+      badge: string;
       name: LanguageValue;
       type: IngredientType;
     }[];
     producer?: {
+      badge: string;
       name: LanguageValue;
       type: IngredientType;
     }[];
