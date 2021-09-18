@@ -4,6 +4,7 @@ import { getDetails } from "./beverages/details/getDetails.ts";
 import { getTotal } from "./beverages/getTotal.ts";
 import { searchByPhrase } from "./beverages/searchByPhrase.ts";
 import { getStats } from "./beverages/stats/getStats.ts";
+import { authorize } from "./user/authorize.ts";
 
 const router = new Router();
 
@@ -12,6 +13,7 @@ router
   .get("/details/:language/:shortId/:brand/:name", getDetails)
   .get("/beverage/total", getTotal)
   .get("/beverage/search/:language/:phrase", searchByPhrase)
-  .get("/beverage/stats/:language", getStats);
+  .get("/beverage/stats/:language", getStats)
+  .post("/authorize", authorize);
 
 export default router;
