@@ -8,6 +8,7 @@
     "date-fns/isBefore": "https://deno.land/x/date_fns@v2.22.1/isBefore/index.ts",
     "date-fns/max": "https://deno.land/x/date_fns@v2.22.1/max/index.ts",
     "date-fns/min": "https://deno.land/x/date_fns@v2.22.1/min/index.ts",
+    "jsonwebtoken": "https://deno.land/x/djwt@v2.3/mod.ts",
     "lodash": "https://deno.land/x/deno_ts_lodash@0.0.1/mod.ts",
     "mongo": "https://deno.land/x/mongo@v0.25.0/mod.ts",
     "oak": "https://deno.land/x/oak@v9.0.0/mod.ts",

@@ -8,7 +8,18 @@ import { timer } from "./api/middleware/timer.ts";
 import "./db.ts";
 
 const app = new Application();
-app.use(oakCors({ origin: "*" }));
+
+// Set CORS
+app.use(
+  oakCors(({ url }) => ({
+    origin: [
+      "http://localhost:3000",
+      "https://hop.land",
+      "https://landofhop.com",
+    ],
+    credentials: url.pathname === "/authorize",
+  }))
+);
 
 // Middlewares
 app.use(errorHandling);

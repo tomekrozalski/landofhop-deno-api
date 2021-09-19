@@ -1,6 +1,6 @@
 import { RouterContext } from "oak";
 import { compare } from "bcrypt";
-// import { create } from "https://deno.land/x/djwt@v2.4/mod.ts";
+import { create } from "jsonwebtoken";
 // import format from "date-fns/format";
 
 // import { DEFAULT_LANGUAGE } from "/api/utils/constants.ts";
@@ -14,13 +14,11 @@ export async function authorize(ctx: RouterContext) {
   const user = await users.findOne({ email });
 
   if (!user) {
-    ctx.response.status = 404;
-    ctx.response.body = {
+    ctx.response.status = 400;
+    return (ctx.response.body = {
       success: false,
-      message: `User with the email address: ${email} not found`,
-    };
-
-    return;
+      message: "Authentication failed",
+    });
   }
 
   try {
@@ -30,7 +28,7 @@ export async function authorize(ctx: RouterContext) {
       ctx.response.status = 400;
       return (ctx.response.body = {
         success: false,
-        message: "Authentication failed, invalid password",
+        message: "Authentication failed",
       });
     }
 
@@ -47,11 +45,16 @@ export async function authorize(ctx: RouterContext) {
     //     console.log("->", jwt);
 
     ctx.response.status = 200;
-    ctx.response.headers.set("test", "test value");
+
+    ctx.cookies.set("test11", "value11", {
+      path: "/",
+      httpOnly: true,
+      expires: new Date("2022-10-10"),
+    });
+
     return (ctx.response.body = {
       success: true,
       message: "Authentication succeeded",
-      // jwt,
     });
   } catch (err) {
     ctx.response.status = 500;
