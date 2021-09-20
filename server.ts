@@ -17,7 +17,8 @@ app.use(
       "https://hop.land",
       "https://landofhop.com",
     ],
-    credentials: url.pathname === "/authorize",
+    credentials:
+      url.pathname === "/authorize" || !!url.pathname.match(/\/admin\//),
   }))
 );
 

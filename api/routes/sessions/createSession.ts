@@ -1,4 +1,6 @@
-import randomBytes from "https://deno.land/std@0.107.0/node/_crypto/randomBytes.ts";
+import { RouterContext } from "oak";
+import { createSessionToken } from "/api/utils/createSessionToken.ts";
+import { respondWith } from "/api/utils/respondWith.ts";
 import { sessions } from "/db.ts";
 
 type Props = {
@@ -7,11 +9,13 @@ type Props = {
   userId: string;
 };
 
-export async function createSession({ ip, userAgent, userId }: Props) {
+export async function createSession(
+  ctx: RouterContext,
+  { ip, userAgent, userId }: Props
+) {
   try {
-    // Generate a session token
-    const sessionToken = randomBytes(43).toString("hex");
-    // database insert for session
+    const sessionToken = createSessionToken();
+
     await sessions.insertOne({
       createdAt: new Date(),
       ip,
@@ -23,7 +27,7 @@ export async function createSession({ ip, userAgent, userId }: Props) {
     });
 
     return sessionToken;
-  } catch (e) {
-    throw new Error("Session creation failed");
+  } catch (err) {
+    return respondWith(ctx, 500, "Session creation failed", err.message);
   }
 }
