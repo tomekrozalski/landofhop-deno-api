@@ -33,12 +33,14 @@ export async function createAndSaveJwtTokens(
     domain: Deno.env.get("CLIENT_URL"),
     path: "/",
     httpOnly: true,
+    // secure: Deno.env.get("ENVIRONMENT") === "production",
   });
 
   ctx.cookies.set("refreshToken", refreshToken, {
     domain: Deno.env.get("CLIENT_URL"),
     path: "/",
     httpOnly: true,
+    // secure: Deno.env.get("ENVIRONMENT") === "production",
     expires: add(new Date(), { minutes: 2 }),
   });
 }

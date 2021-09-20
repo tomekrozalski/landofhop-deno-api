@@ -6,7 +6,8 @@ import { getDetails } from "./beverages/details/getDetails.ts";
 import { getTotal } from "./beverages/getTotal.ts";
 import { searchByPhrase } from "./beverages/searchByPhrase.ts";
 import { getStats } from "./beverages/stats/getStats.ts";
-import { authorize } from "./user/authorize.ts";
+import { authorize } from "./sessions/authorize.ts";
+import { unauthorize } from "./sessions/unauthorize.ts";
 import { test } from "./beverages/admin/test.ts";
 
 const router = new Router();
@@ -18,6 +19,7 @@ router
   .get("/beverage/search/:language/:phrase", searchByPhrase)
   .get("/beverage/stats/:language", getStats)
   .get("/admin/test", authenticate, test)
-  .post("/authorize", authorize);
+  .post("/authorize", authorize)
+  .get("/unauthorize", unauthorize);
 
 export default router;

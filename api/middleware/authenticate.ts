@@ -14,9 +14,7 @@ export async function authenticate(
   next: () => Promise<unknown>
 ) {
   try {
-    const cookie = ctx.request.headers.get("cookie");
-    if (!cookie) throw new Error("Cookies not found");
-    const cookies = extractCookies(cookie);
+    const cookies = extractCookies(ctx);
 
     if (cookies.accessToken) {
       const payload = await verify(cookies.accessToken, key);
