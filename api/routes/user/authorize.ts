@@ -1,12 +1,10 @@
 import { RouterContext } from "oak";
 import { compare } from "bcrypt";
 import { create } from "jsonwebtoken";
-// import format from "date-fns/format";
+import add from "date-fns/add";
 
-// import { DEFAULT_LANGUAGE } from "/api/utils/constants.ts";
-// import { DateFormat } from "/api/utils/enums/DateFormat.enum.ts";
+import { createSession } from "/api/routes/sessions/createSession.ts";
 import { users } from "/db.ts";
-// import type { BasicsOutput } from "./BasicsOutput.d.ts";
 
 export async function authorize(ctx: RouterContext) {
   const result = ctx.request.body();
@@ -32,24 +30,43 @@ export async function authorize(ctx: RouterContext) {
       });
     }
 
-    // Deno.env.get("JWT_SECRET")
+    const sessionToken = await createSession({
+      ip: ctx.request.ip,
+      userAgent: ctx.request.headers.get("user-agent") ?? "",
+      userId: user._id,
+    });
 
-    //     const key = await crypto.subtle.generateKey(
-    //       { name: "HMAC", hash: "SHA-512" },
-    //       true,
-    //       ["sign", "verify"]
-    //     );
-    //
-    //     const jwt = await create({ alg: "HS512", typ: "JWT" }, { foo: "bar" }, key);
-    //
-    //     console.log("->", jwt);
+    const key = await crypto.subtle.generateKey(
+      { name: "HMAC", hash: "SHA-512" },
+      true,
+      ["sign", "verify"]
+    );
+
+    const accessToken = await create(
+      { alg: "HS512", typ: "JWT" },
+      { sessionToken, userId: user._id },
+      key
+    );
+
+    const refreshToken = await create(
+      { alg: "HS512", typ: "JWT" },
+      { sessionToken },
+      key
+    );
 
     ctx.response.status = 200;
 
-    ctx.cookies.set("test11", "value11", {
+    ctx.cookies.set("accessToken", accessToken, {
+      domain: Deno.env.get("CLIENT_URL"),
       path: "/",
       httpOnly: true,
-      expires: new Date("2022-10-10"),
+    });
+
+    ctx.cookies.set("refreshToken", refreshToken, {
+      domain: Deno.env.get("CLIENT_URL"),
+      path: "/",
+      httpOnly: true,
+      expires: add(new Date(), { months: 3 }),
     });
 
     return (ctx.response.body = {
