@@ -1,8 +1,7 @@
 import { RouterContext } from "oak";
-import { verify } from "jsonwebtoken";
+import { decode } from "jsonwebtoken";
 import { Bson } from "mongo";
 
-import { key } from "/api/utils/manageAuthTokens.ts";
 import { respondWith } from "/api/utils/respondWith.ts";
 import { extractCookies } from "/api/utils/extractCookies.ts";
 import { sessions } from "/db.ts";
@@ -14,9 +13,11 @@ export async function unauthorize(ctx: RouterContext) {
       return respondWith(ctx, 400, "Cannot found access token");
     }
 
-    const payload = await verify(cookies.accessToken, key);
-    if (!payload || !payload.userId || !payload.sessionToken) {
-      return respondWith(ctx, 400, "Incorrect access token provided");
+    const [header, payload, signature]: [any, any, any] = await decode(
+      cookies.accessToken
+    );
+    if (!payload || !payload.sessionToken || !payload.userId) {
+      return respondWith(ctx, 400, "Incorrect cookie payload");
     }
 
     await sessions.deleteOne({
@@ -24,8 +25,10 @@ export async function unauthorize(ctx: RouterContext) {
       userId: new Bson.ObjectId(payload.userId),
     });
 
-    ctx.cookies.set("accessToken", "", { expires: new Date() });
-    ctx.cookies.set("refreshToken", "", { expires: new Date() });
+    ctx.cookies.set("accessToken", "deleted", { expires: new Date(0) });
+    ctx.cookies.set("refreshToken", "deleted", { expires: new Date(0) });
+
+    return respondWith(ctx, 200, "Successfully logged out");
   } catch (err) {
     return respondWith(ctx, 500, "Unauthorization failed", err.message);
   }

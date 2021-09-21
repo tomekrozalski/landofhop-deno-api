@@ -8,7 +8,8 @@ import { searchByPhrase } from "./beverages/searchByPhrase.ts";
 import { getStats } from "./beverages/stats/getStats.ts";
 import { authorize } from "./sessions/authorize.ts";
 import { unauthorize } from "./sessions/unauthorize.ts";
-import { test } from "./beverages/admin/test.ts";
+import { verifyToken } from "./sessions/verifyToken.ts";
+// import { test } from "./beverages/admin/test.ts";
 
 const router = new Router();
 
@@ -18,8 +19,8 @@ router
   .get("/beverage/total", getTotal)
   .get("/beverage/search/:language/:phrase", searchByPhrase)
   .get("/beverage/stats/:language", getStats)
-  .get("/admin/test", authenticate, test)
   .post("/authorize", authorize)
-  .get("/unauthorize", unauthorize);
+  .get("/unauthorize", unauthorize)
+  .get("/verifyToken", authenticate, verifyToken);
 
 export default router;

@@ -29,18 +29,20 @@ export async function createAndSaveJwtTokens(
     key
   );
 
-  ctx.cookies.set("accessToken", accessToken, {
+  await ctx.cookies.set("accessToken", accessToken, {
     domain: Deno.env.get("CLIENT_URL"),
     path: "/",
     httpOnly: true,
-    // secure: Deno.env.get("ENVIRONMENT") === "production",
+    secure: true,
+    sameSite: false,
   });
 
-  ctx.cookies.set("refreshToken", refreshToken, {
+  await ctx.cookies.set("refreshToken", refreshToken, {
     domain: Deno.env.get("CLIENT_URL"),
     path: "/",
     httpOnly: true,
-    // secure: Deno.env.get("ENVIRONMENT") === "production",
-    expires: add(new Date(), { minutes: 2 }),
+    secure: true,
+    sameSite: false,
+    expires: add(new Date(), { weeks: 3 }),
   });
 }

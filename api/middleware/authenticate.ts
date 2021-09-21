@@ -15,11 +15,14 @@ export async function authenticate(
 ) {
   try {
     const cookies = extractCookies(ctx);
+    if (!cookies.accessToken && !cookies.refreshToken) {
+      return respondWith(ctx, 401, "Unauthorized");
+    }
 
     if (cookies.accessToken) {
       const payload = await verify(cookies.accessToken, key);
       if (!payload || !payload.userId || !payload.sessionToken) {
-        return respondWith(ctx, 400, "Incorrect access token provided");
+        return respondWith(ctx, 403, "Incorrect access token provided");
       }
 
       const session = await sessions.findOne({
@@ -35,7 +38,7 @@ export async function authenticate(
     if (cookies.refreshToken) {
       const payload = await verify(cookies.refreshToken, key);
       if (!payload || !payload.sessionToken) {
-        return respondWith(ctx, 400, "Incorrect refresh token provided");
+        return respondWith(ctx, 403, "Incorrect refresh token provided");
       }
 
       const session = await sessions.findOne({
@@ -60,7 +63,7 @@ export async function authenticate(
       }
     }
 
-    return respondWith(ctx, 400, "Authentication failed");
+    return respondWith(ctx, 403, "Authentication failed");
   } catch (err) {
     return respondWith(ctx, 500, "Authentication error", err.message);
   }

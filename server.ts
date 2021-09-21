@@ -18,7 +18,8 @@ app.use(
       "https://landofhop.com",
     ],
     credentials:
-      url.pathname === "/authorize" || !!url.pathname.match(/\/admin\//),
+      ["/authorize", "/unauthorize", "/verifyToken"].includes(url.pathname) ||
+      !!url.pathname.match(/\/admin\//),
   }))
 );
 
