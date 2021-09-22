@@ -11,7 +11,15 @@ await client.connect({
   tls: true,
   servers: [
     {
+      host: "landofhop-shard-00-00.ku9ye.mongodb.net",
+      port: 27017,
+    },
+    {
       host: "landofhop-shard-00-01.ku9ye.mongodb.net",
+      port: 27017,
+    },
+    {
+      host: "landofhop-shard-00-02.ku9ye.mongodb.net",
       port: 27017,
     },
   ],

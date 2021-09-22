@@ -29,4 +29,18 @@ app.use(timer);
 
 app.use(router.routes());
 
-await app.listen({ port: Number(Deno.env.get("PORT")) });
+await app.listen({
+  port: Number(Deno.env.get("PORT")),
+  // @ToDo: it should run as secure https, but for now
+  // I cannot set it up on Heroku
+  // ...(Deno.env.get("ENVIRONMENT") === "production"
+  //   ? {
+  //       secure: true,
+  //       certFile: Deno.env.get("SSL_CERTIFICATE") as string,
+  //       keyFile: Deno.env.get("SSL_PRIVATE_KEY") as string,
+  //       alpnProtocols: ["h2", "http/1.1"],
+  //     }
+  //   : {
+  //       secure: false,
+  //     }),
+});
