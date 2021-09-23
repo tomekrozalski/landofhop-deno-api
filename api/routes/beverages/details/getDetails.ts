@@ -2,6 +2,7 @@ import { RouterContext } from "oak";
 
 import { AppLanguage } from "/api/utils/enums/AppLanguage.enum.ts";
 import { basics, beverages } from "/db.ts";
+import { respondWith } from "/api/utils/respondWith.ts";
 import { normalizer as detailsNormalizer } from "./normalizer.ts";
 import type { DetailsOutput } from "./DetailsOutput.d.ts";
 import type { LinkDataOutput } from "./LinkDataOutput.d.ts";
@@ -20,13 +21,7 @@ export async function getDetails(ctx: RouterContext) {
   });
 
   if (!value) {
-    ctx.response.status = 404;
-    ctx.response.body = {
-      success: false,
-      message: "No beverage found",
-    };
-
-    return;
+    return respondWith(ctx, 404, "No beverage found");
   }
 
   const previousBasics: LinkDataOutput[] = [];
