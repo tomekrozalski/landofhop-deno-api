@@ -10,6 +10,7 @@ import { getStats } from "./beverages/stats/getStats.ts";
 import { authorize } from "./sessions/authorize.ts";
 import { unauthorize } from "./sessions/unauthorize.ts";
 import { verifyToken } from "./sessions/verifyToken.ts";
+import { getInstitutions } from "./institutions/getIntitutions.ts";
 
 const router = new Router();
 
@@ -26,6 +27,7 @@ router
   .get("/beverage/stats/:language", getStats)
   .post("/authorize", authorize)
   .get("/unauthorize", unauthorize)
-  .get("/verifyToken", authenticate, verifyToken);
+  .get("/verifyToken", authenticate, verifyToken)
+  .get("/admin/institutions", getInstitutions);
 
 export default router;
