@@ -2,7 +2,6 @@ import { RouterContext } from "oak";
 import { verify } from "jsonwebtoken";
 import { Bson } from "mongo";
 
-import { key } from "/api/utils/manageAuthTokens.ts";
 import { extractCookies } from "/api/utils/extractCookies.ts";
 import { createAndSaveJwtTokens } from "/api/utils/manageAuthTokens.ts";
 import { respondWith } from "/api/utils/respondWith.ts";
@@ -20,7 +19,11 @@ export async function authenticate(
     }
 
     if (cookies.accessToken) {
-      const payload = await verify(cookies.accessToken, key);
+      const payload = await verify(
+        cookies.accessToken,
+        Deno.env.get("JWT_SECRET") as string,
+        "HS512"
+      );
       if (!payload || !payload.userId || !payload.sessionToken) {
         return respondWith(ctx, 403, "Incorrect access token provided");
       }
@@ -36,7 +39,11 @@ export async function authenticate(
     }
 
     if (cookies.refreshToken) {
-      const payload = await verify(cookies.refreshToken, key);
+      const payload = await verify(
+        cookies.refreshToken,
+        Deno.env.get("JWT_SECRET") as string,
+        "HS512"
+      );
       if (!payload || !payload.sessionToken) {
         return respondWith(ctx, 403, "Incorrect refresh token provided");
       }

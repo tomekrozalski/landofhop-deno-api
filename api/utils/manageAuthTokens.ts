@@ -2,12 +2,6 @@ import { RouterContext } from "oak";
 import { create } from "jsonwebtoken";
 import add from "date-fns/add";
 
-export const key = await crypto.subtle.generateKey(
-  { name: "HMAC", hash: "SHA-512" },
-  true,
-  ["sign", "verify"]
-);
-
 type Props = {
   sessionToken: string;
   userId: string;
@@ -20,13 +14,13 @@ export async function createAndSaveJwtTokens(
   const accessToken = await create(
     { alg: "HS512", typ: "JWT" },
     { sessionToken, userId },
-    key
+    Deno.env.get("JWT_SECRET") as string
   );
 
   const refreshToken = await create(
     { alg: "HS512", typ: "JWT" },
     { sessionToken },
-    key
+    Deno.env.get("JWT_SECRET") as string
   );
 
   await ctx.cookies.set("accessToken", accessToken, {

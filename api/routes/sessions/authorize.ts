@@ -36,7 +36,7 @@ export async function authorize(ctx: RouterContext) {
 
       return respondWith(ctx, 200, "Authentication succeeded");
     } else {
-      throw new Error("Session token creation failed");
+      return respondWith(ctx, 500, "Session token creation failed");
     }
   } catch (err) {
     return respondWith(ctx, 500, "Decryption failed", err.message);

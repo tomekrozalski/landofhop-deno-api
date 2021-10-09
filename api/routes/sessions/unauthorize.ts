@@ -13,9 +13,8 @@ export async function unauthorize(ctx: RouterContext) {
       return respondWith(ctx, 400, "Cannot found access token");
     }
 
-    const [header, payload, signature]: [any, any, any] = await decode(
-      cookies.accessToken
-    );
+    const { payload }: any = await decode(cookies.accessToken);
+
     if (!payload || !payload.sessionToken || !payload.userId) {
       return respondWith(ctx, 400, "Incorrect cookie payload");
     }
