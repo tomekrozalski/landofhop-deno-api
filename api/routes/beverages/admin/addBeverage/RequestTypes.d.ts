@@ -11,4 +11,12 @@ export type RequestTypes = {
     cooperation?: Institution[];
     container: Container;
   };
+  producer?: {
+    series?: LanguageValue[];
+    cooperation?: Institution[];
+  };
+  editorial?: {
+    cooperation?: Institution[];
+    notes?: string;
+  };
 };
