@@ -5,7 +5,16 @@ import { AppLanguage } from "/api/utils/enums/AppLanguage.enum.ts";
 import { DateFormat } from "/api/utils/enums/DateFormat.enum.ts";
 import { beverages } from "/db.ts";
 import { respondWith } from "/api/utils/respondWith.ts";
-import type { NotesOutput, RawData } from "./NotesOutput.d.ts";
+
+type NotesOutput = {
+  notes?: string;
+  updated?: string;
+};
+
+type RawData = {
+  notes?: string;
+  updated?: Date;
+};
 
 export async function getNotes(ctx: RouterContext) {
   const language = ctx.params.language as AppLanguage;
