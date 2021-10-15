@@ -11,6 +11,7 @@
     "jsonwebtoken": "https://deno.land/x/djwt@v2.0/mod.ts",
     "lodash": "https://deno.land/x/deno_ts_lodash@0.0.1/mod.ts",
     "mongo": "https://deno.land/x/mongo@v0.25.0/mod.ts",
+    "multipart-stream": "https://deno.land/x/multipart_stream@0.1.1/mod.ts",
     "nanoid": "https://deno.land/x/nanoid@v3.0.0/mod.ts",
     "oak": "https://deno.land/x/oak@v9.0.0/mod.ts",
     "/": "./",
