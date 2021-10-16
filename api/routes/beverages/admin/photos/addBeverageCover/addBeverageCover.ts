@@ -13,19 +13,15 @@ export async function addBeverageCover(
   const data: any = await body.value.read();
   const { badge, brand, shortId } = data.fields;
 
-  console.log("deno", { badge, brand, shortId });
-
   try {
     const [stream, boundary] = streamFromMultipart(
       async (multipartWriter: any) => {
-        console.log("name", data.files[0].filename);
         const img = await Deno.open(data.files[0].filename);
         await multipartWriter.writeFile(
           data.files[0].name,
           data.files[0].originalName,
           img
         );
-        await multipartWriter.writeField("brand", "field value");
         img.close();
       }
     );
@@ -43,8 +39,6 @@ export async function addBeverageCover(
     );
 
     const coverImage = await response.json();
-
-    console.log({ coverImage });
 
     await beverages.updateOne(
       {
