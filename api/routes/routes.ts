@@ -15,6 +15,7 @@ import { addInstitution } from "./institutions/addInstitution.ts";
 import { addBeverage } from "./beverages/admin/addBeverage/addBeverage.ts";
 import { getPhotosData } from "./beverages/admin/getPhotosData.ts";
 import { addBeverageCover } from "./beverages/admin/photos/addBeverageCover/addBeverageCover.ts";
+import { removeBeverage } from "./beverages/admin/removeBeverage.ts";
 
 const router = new Router();
 
@@ -40,6 +41,11 @@ router
     authenticate,
     getPhotosData
   )
-  .post("/admin/beverage/cover", authenticate, addBeverageCover);
+  .post("/admin/beverage/cover", authenticate, addBeverageCover)
+  .delete(
+    "/admin/beverage/:shortId/:brand/:name",
+    authenticate,
+    removeBeverage
+  );
 
 export default router;
