@@ -29,7 +29,12 @@ export async function addBeverage(ctx: RouterContext) {
     await basics.insertOne(formattedBasics);
     await beverages.insertOne(formattedBeverage);
 
-    return respondWith(ctx, 200, "Beverage successfully added");
+    ctx.response.status = 200;
+    return (ctx.response.body = {
+      badge: formattedBasics.badge,
+      brand: formattedBasics.brand.badge,
+      shortId: formattedBasics.shortId,
+    });
   } catch (err) {
     return respondWith(ctx, 500, "Something went wrong");
   }
