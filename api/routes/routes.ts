@@ -18,6 +18,8 @@ import { addBeverageCover } from "./beverages/admin/photos/addBeverageCover.ts";
 import { removeBeverage } from "./beverages/admin/removeBeverage.ts";
 import { addBeverageGallery } from "./beverages/admin/photos/addBeverageGallery.ts";
 import { getAdminDetails } from "./beverages/admin/getAdminDetails/getAdminDetails.ts";
+import { updateBeverage } from "./beverages/admin/updateBeverage.ts";
+import { updateBasics } from "./beverages/admin/updateBasics.ts";
 
 const router = new Router();
 
@@ -46,6 +48,12 @@ router
   .post("/admin/beverage/cover", authenticate, addBeverageCover)
   .delete("/admin/beverage/:shortId/:brand/:name", authenticate, removeBeverage)
   .post("/admin/beverage/gallery", authenticate, addBeverageGallery)
-  .get("/admin/details/:shortId/:brand/:name", authenticate, getAdminDetails);
+  .get("/admin/details/:shortId/:brand/:name", authenticate, getAdminDetails)
+  .put(
+    "/admin/beverage/:shortId/:brand/:name",
+    authenticate,
+    updateBeverage,
+    updateBasics
+  );
 
 export default router;

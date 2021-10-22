@@ -1,6 +1,12 @@
 import type { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
 import { ContainerType } from "/api/models/beverage/enums.ts";
 
+export type BasicsCoverImage = {
+  height: number;
+  width: number;
+  outlines: string;
+};
+
 export type BasicsWithoutId = {
   shortId: string;
   badge: string;
@@ -9,11 +15,7 @@ export type BasicsWithoutId = {
     name: LanguageValue[];
   };
   name: LanguageValue[];
-  coverImage?: {
-    height: number;
-    width: number;
-    outlines: string;
-  };
+  coverImage?: BasicsCoverImage;
   containerType: ContainerType;
   added: Date;
 };
