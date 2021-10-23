@@ -8,6 +8,7 @@ import {
 export type AdminDetailsOutput = {
   label: {
     badge: string;
+    // -----------
     name: {
       language: string;
       value: string;
@@ -18,6 +19,16 @@ export type AdminDetailsOutput = {
     }[];
     brand: string;
     cooperation: string[] | null;
+    tale: {
+      article: string;
+      language: string;
+      lead: string;
+    }[];
+    barcode: string | null;
+    // -----------
+    filtration: boolean | null;
+    pasteurization: boolean | null;
+    // -----------
     container: {
       color: ContainerColor;
       hasCapWireFlip: boolean;
@@ -34,9 +45,16 @@ export type AdminDetailsOutput = {
       value: string;
     }[];
     cooperation: string[] | null;
+    // -----------
+    filtration: boolean | null;
+    pasteurization: boolean | null;
   };
   editorial: {
     cooperation: string[] | null;
+    // -----------
+    filtration: boolean | null;
+    pasteurization: boolean | null;
+    // -----------
     notes: string | null;
   };
 };

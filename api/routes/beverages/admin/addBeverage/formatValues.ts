@@ -39,6 +39,12 @@ export function formatBeverage(
         series: label.series,
         brand: label.brand,
         cooperation: label.cooperation,
+        tale: label.tale,
+        barcode: label.barcode,
+      },
+      brewing: {
+        filtration: label.filtration,
+        pasteurization: label.pasteurization,
       },
       container: label.container,
     },
@@ -46,11 +52,20 @@ export function formatBeverage(
       general: {
         series: producer?.series,
         cooperation: producer?.cooperation,
+        tale: producer?.tale,
+      },
+      brewing: {
+        filtration: producer?.filtration,
+        pasteurization: producer?.pasteurization,
       },
     },
     editorial: {
       general: {
         cooperation: editorial?.cooperation,
+      },
+      brewing: {
+        filtration: editorial?.filtration,
+        pasteurization: editorial?.pasteurization,
       },
       ...(photos && { photos }),
       notes: editorial?.notes,
