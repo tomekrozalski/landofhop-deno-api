@@ -1,3 +1,10 @@
+import {
+  AlcoholRelate,
+  AlcoholScope,
+  AlcoholUnit,
+  ExtractRelate,
+  ExtractUnit,
+} from "/api/models/beverage/enums.ts";
 import type { Institution } from "/api/models/beverage/details/fragments/Institution.d.ts";
 import type { Tale } from "/api/models/beverage/details/fragments/Tale.d.ts";
 import type { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
@@ -14,6 +21,18 @@ export type RequestTypes = {
     tale?: Tale[];
     barcode?: string;
     // -----------
+    style?: LanguageValue[];
+    extract?: {
+      value: number;
+      unit: ExtractUnit;
+      relate: ExtractRelate;
+    };
+    alcohol?: {
+      value: number;
+      unit: AlcoholUnit;
+      relate: AlcoholRelate;
+      scope?: AlcoholScope;
+    };
     filtration?: boolean;
     pasteurization?: boolean;
     // -----------
@@ -24,12 +43,26 @@ export type RequestTypes = {
     cooperation?: Institution[];
     tale?: Tale[];
     // -----------
+    style?: LanguageValue[];
+    extract?: {
+      value: number;
+      unit: ExtractUnit;
+      relate: ExtractRelate;
+    };
+    alcohol?: {
+      value: number;
+      unit: AlcoholUnit;
+      relate: AlcoholRelate;
+      scope?: AlcoholScope;
+    };
     filtration?: boolean;
     pasteurization?: boolean;
   };
   editorial?: {
     cooperation?: Institution[];
     // -----------
+    style?: LanguageValue[];
+    alcoholScope?: AlcoholScope;
     filtration?: boolean;
     pasteurization?: boolean;
     // -----------

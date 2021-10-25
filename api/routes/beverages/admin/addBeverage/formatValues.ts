@@ -43,6 +43,9 @@ export function formatBeverage(
         barcode: label.barcode,
       },
       brewing: {
+        style: label.style,
+        extract: label.extract,
+        alcohol: label.alcohol,
         filtration: label.filtration,
         pasteurization: label.pasteurization,
       },
@@ -55,6 +58,9 @@ export function formatBeverage(
         tale: producer?.tale,
       },
       brewing: {
+        style: producer?.style,
+        extract: producer?.extract,
+        alcohol: producer?.alcohol,
         filtration: producer?.filtration,
         pasteurization: producer?.pasteurization,
       },
@@ -64,6 +70,10 @@ export function formatBeverage(
         cooperation: editorial?.cooperation,
       },
       brewing: {
+        style: editorial?.style,
+        alcohol: {
+          scope: editorial?.alcoholScope,
+        },
         filtration: editorial?.filtration,
         pasteurization: editorial?.pasteurization,
       },
