@@ -39,6 +39,8 @@ export function formatBeverage(
         series: label.series,
         brand: label.brand,
         cooperation: label.cooperation,
+        contract: label.contract,
+        isContract: label.isContract,
         tale: label.tale,
         barcode: label.barcode,
       },
@@ -55,6 +57,8 @@ export function formatBeverage(
       general: {
         series: producer?.series,
         cooperation: producer?.cooperation,
+        contract: producer?.contract,
+        isContract: producer?.isContract,
         tale: producer?.tale,
       },
       brewing: {
@@ -68,6 +72,8 @@ export function formatBeverage(
     editorial: {
       general: {
         cooperation: editorial?.cooperation,
+        contract: editorial?.contract,
+        isContract: editorial?.isContract,
       },
       brewing: {
         style: editorial?.style,

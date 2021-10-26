@@ -33,6 +33,9 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       cooperation:
         beverage.label.general?.cooperation?.map(({ shortId }) => shortId) ??
         null,
+      contract:
+        beverage.label.general?.contract?.shortId ??
+        (beverage.label.general?.isContract ? "--" : null),
       tale: beverage.label.general?.tale?.map(normalizeTale) ?? [],
       barcode: beverage.label.general?.barcode ?? null,
       // -----------
@@ -43,14 +46,14 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         unit: beverage.label.brewing?.extract?.unit ?? null,
         relate: beverage.label.brewing?.extract?.relate ?? null,
       },
-      ...(beverage.label.brewing?.alcohol && {
-        alcohol: {
-          value: beverage.label.brewing?.alcohol?.value ?? null,
-          unit: beverage.label.brewing?.alcohol?.unit ?? null,
-          relate: beverage.label.brewing?.alcohol?.relate ?? null,
-          scope: beverage.label.brewing?.alcohol?.scope ?? "--",
-        },
-      }),
+      alcohol: {
+        value: beverage.label.brewing?.alcohol?.value ?? null,
+        unit: beverage.label.brewing?.alcohol?.unit ?? null,
+        relate: beverage.label.brewing?.alcohol?.relate ?? null,
+        scope:
+          beverage.label.brewing?.alcohol?.scope ??
+          (beverage.label.brewing?.alcohol ? "--" : null),
+      },
       filtration: beverage.label.brewing?.filtration ?? null,
       pasteurization: beverage.label.brewing?.pasteurization ?? null,
       // -----------
@@ -71,6 +74,9 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         beverage.producer?.general?.cooperation?.map(
           ({ shortId }) => shortId
         ) ?? null,
+      contract:
+        beverage.producer?.general?.contract?.shortId ??
+        (beverage.producer?.general?.isContract ? "--" : null),
       tale: beverage.producer?.general?.tale?.map(normalizeTale) ?? [],
       // -----------
       style:
@@ -94,6 +100,9 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         beverage.editorial?.general?.cooperation?.map(
           ({ shortId }) => shortId
         ) ?? null,
+      contract:
+        beverage.editorial?.general?.contract?.shortId ??
+        (beverage.editorial?.general?.isContract ? "--" : null),
       // -----------
       style:
         beverage.editorial?.brewing?.style?.map(normalizeLanguageValue) ?? [],

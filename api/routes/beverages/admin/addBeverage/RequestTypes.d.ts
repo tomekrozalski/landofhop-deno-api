@@ -18,6 +18,8 @@ export type RequestTypes = {
     series?: LanguageValue[];
     brand: Institution;
     cooperation?: Institution[];
+    contract?: string;
+    isContract?: true;
     tale?: Tale[];
     barcode?: string;
     // -----------
@@ -41,6 +43,8 @@ export type RequestTypes = {
   producer?: {
     series?: LanguageValue[];
     cooperation?: Institution[];
+    contract?: string;
+    isContract?: true;
     tale?: Tale[];
     // -----------
     style?: LanguageValue[];
@@ -60,6 +64,8 @@ export type RequestTypes = {
   };
   editorial?: {
     cooperation?: Institution[];
+    contract?: string;
+    isContract?: true;
     // -----------
     style?: LanguageValue[];
     alcoholScope?: AlcoholScope;

@@ -19,6 +19,7 @@ export type AdminDetailsOutput = {
     }[];
     brand: string;
     cooperation: string[] | null;
+    contract: string | null;
     tale: {
       article: string;
       language: string;
