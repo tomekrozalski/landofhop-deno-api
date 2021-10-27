@@ -1,8 +1,14 @@
 import {
+  AlcoholRelate,
+  AlcoholUnit,
+  AlcoholScope,
   ContainerColor,
   ContainerMaterial,
   ContainerType,
   ContainerUnit,
+  ExtractRelate,
+  ExtractUnit,
+  Fermentation,
 } from "/api/models/beverage/enums.ts";
 
 export type AdminDetailsOutput = {
@@ -27,6 +33,22 @@ export type AdminDetailsOutput = {
     }[];
     barcode: string | null;
     // -----------
+    fermentation: Fermentation[] | null;
+    style: {
+      language: string;
+      value: string;
+    }[];
+    extract: {
+      value: string | null;
+      unit: ExtractUnit | null;
+      relate: ExtractRelate | null;
+    };
+    alcohol: {
+      value: string | null;
+      unit: AlcoholUnit | null;
+      relate: AlcoholRelate | null;
+      scope: AlcoholScope | "--" | null;
+    };
     filtration: boolean | null;
     pasteurization: boolean | null;
     // -----------
@@ -52,7 +74,29 @@ export type AdminDetailsOutput = {
       value: string;
     }[];
     cooperation: string[] | null;
+    contract: string | null;
+    tale: {
+      article: string;
+      language: string;
+      lead: string;
+    }[];
     // -----------
+    fermentation: Fermentation[] | null;
+    style: {
+      language: string;
+      value: string;
+    }[];
+    extract: {
+      value: string | null;
+      unit: ExtractUnit | null;
+      relate: ExtractRelate | null;
+    };
+    alcohol: {
+      value: string | null;
+      unit: AlcoholUnit | null;
+      relate: AlcoholRelate | null;
+      scope: AlcoholScope | null;
+    };
     filtration: boolean | null;
     pasteurization: boolean | null;
     // -----------
@@ -65,7 +109,14 @@ export type AdminDetailsOutput = {
   };
   editorial: {
     cooperation: string[] | null;
+    contract: string | null;
     // -----------
+    fermentation: Fermentation[] | null;
+    style: {
+      language: string;
+      value: string;
+    }[];
+    alcoholScope: AlcoholScope | null;
     filtration: boolean | null;
     pasteurization: boolean | null;
     // -----------

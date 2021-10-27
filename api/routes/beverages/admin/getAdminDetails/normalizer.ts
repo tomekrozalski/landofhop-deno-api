@@ -54,15 +54,15 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       tale: beverage.label.general?.tale?.map(normalizeTale) ?? [],
       barcode: beverage.label.general?.barcode ?? null,
       // -----------
-
+      fermentation: beverage.label.brewing?.fermentation ?? null,
       style: beverage.label.brewing?.style?.map(normalizeLanguageValue) ?? [],
       extract: {
-        value: beverage.label.brewing?.extract?.value ?? null,
+        value: beverage.label.brewing?.extract?.value?.toString() ?? null,
         unit: beverage.label.brewing?.extract?.unit ?? null,
         relate: beverage.label.brewing?.extract?.relate ?? null,
       },
       alcohol: {
-        value: beverage.label.brewing?.alcohol?.value ?? null,
+        value: beverage.label.brewing?.alcohol?.value?.toString() ?? null,
         unit: beverage.label.brewing?.alcohol?.unit ?? null,
         relate: beverage.label.brewing?.alcohol?.relate ?? null,
         scope:
@@ -95,15 +95,16 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         (beverage.producer?.general?.isContract ? "--" : null),
       tale: beverage.producer?.general?.tale?.map(normalizeTale) ?? [],
       // -----------
+      fermentation: beverage.producer?.brewing?.fermentation ?? null,
       style:
         beverage.producer?.brewing?.style?.map(normalizeLanguageValue) ?? [],
       extract: {
-        value: beverage.producer?.brewing?.extract?.value ?? null,
+        value: beverage.producer?.brewing?.extract?.value?.toString() ?? null,
         unit: beverage.producer?.brewing?.extract?.unit ?? null,
         relate: beverage.producer?.brewing?.extract?.relate ?? null,
       },
       alcohol: {
-        value: beverage.producer?.brewing?.alcohol?.value ?? null,
+        value: beverage.producer?.brewing?.alcohol?.value?.toString() ?? null,
         unit: beverage.producer?.brewing?.alcohol?.unit ?? null,
         relate: beverage.producer?.brewing?.alcohol?.relate ?? null,
         scope: beverage.producer?.brewing?.alcohol?.scope ?? null,
@@ -122,6 +123,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         beverage.editorial?.general?.contract?.shortId ??
         (beverage.editorial?.general?.isContract ? "--" : null),
       // -----------
+      fermentation: beverage.editorial?.brewing?.fermentation ?? null,
       style:
         beverage.editorial?.brewing?.style?.map(normalizeLanguageValue) ?? [],
       alcoholScope: beverage.editorial?.brewing?.alcohol?.scope ?? null,

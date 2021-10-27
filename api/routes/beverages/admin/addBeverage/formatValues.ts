@@ -45,6 +45,7 @@ export function formatBeverage(
         barcode: label.barcode,
       },
       brewing: {
+        fermentation: label.fermentation,
         style: label.style,
         extract: label.extract,
         alcohol: label.alcohol,
@@ -66,6 +67,7 @@ export function formatBeverage(
         tale: producer?.tale,
       },
       brewing: {
+        fermentation: producer?.fermentation,
         style: producer?.style,
         extract: producer?.extract,
         alcohol: producer?.alcohol,
@@ -84,6 +86,7 @@ export function formatBeverage(
         isContract: editorial?.isContract,
       },
       brewing: {
+        fermentation: editorial?.fermentation,
         style: editorial?.style,
         alcohol: {
           scope: editorial?.alcoholScope,

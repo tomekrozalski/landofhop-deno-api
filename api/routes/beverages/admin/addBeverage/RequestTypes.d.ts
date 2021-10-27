@@ -4,6 +4,7 @@ import {
   AlcoholUnit,
   ExtractRelate,
   ExtractUnit,
+  Fermentation,
 } from "/api/models/beverage/enums.ts";
 import type { Institution } from "/api/models/beverage/details/fragments/Institution.d.ts";
 import type { Price } from "/api/models/beverage/details/fragments/Price.d.ts";
@@ -24,6 +25,7 @@ export type RequestTypes = {
     tale?: Tale[];
     barcode?: string;
     // -----------
+    fermentation?: Fermentation[];
     style?: LanguageValue[];
     extract?: {
       value: number;
@@ -49,6 +51,7 @@ export type RequestTypes = {
     isContract?: true;
     tale?: Tale[];
     // -----------
+    fermentation?: Fermentation[];
     style?: LanguageValue[];
     extract?: {
       value: number;
@@ -71,6 +74,7 @@ export type RequestTypes = {
     contract?: string;
     isContract?: true;
     // -----------
+    fermentation?: Fermentation[];
     style?: LanguageValue[];
     alcoholScope?: AlcoholScope;
     filtration?: boolean;
