@@ -52,6 +52,10 @@ export function formatBeverage(
         pasteurization: label.pasteurization,
       },
       container: label.container,
+      price: label.price?.map((props) => ({
+        ...props,
+        date: new Date(props.date),
+      })),
     },
     producer: {
       general: {
@@ -68,6 +72,10 @@ export function formatBeverage(
         filtration: producer?.filtration,
         pasteurization: producer?.pasteurization,
       },
+      price: producer?.price?.map((props) => ({
+        ...props,
+        date: new Date(props.date),
+      })),
     },
     editorial: {
       general: {
@@ -83,6 +91,10 @@ export function formatBeverage(
         filtration: editorial?.filtration,
         pasteurization: editorial?.pasteurization,
       },
+      price: editorial?.price?.map((props) => ({
+        ...props,
+        date: new Date(props.date),
+      })),
       ...(photos && { photos }),
       notes: editorial?.notes,
     },

@@ -39,6 +39,12 @@ export type AdminDetailsOutput = {
       unit: ContainerUnit;
       value: number;
     };
+    price: {
+      currency: string;
+      date: string;
+      shop: string | null;
+      value: string;
+    }[];
   };
   producer: {
     series: {
@@ -49,6 +55,13 @@ export type AdminDetailsOutput = {
     // -----------
     filtration: boolean | null;
     pasteurization: boolean | null;
+    // -----------
+    price: {
+      currency: string;
+      date: string;
+      shop: string | null;
+      value: string;
+    }[];
   };
   editorial: {
     cooperation: string[] | null;
@@ -56,6 +69,12 @@ export type AdminDetailsOutput = {
     filtration: boolean | null;
     pasteurization: boolean | null;
     // -----------
+    price: {
+      currency: string;
+      date: string;
+      shop: string | null;
+      value: string;
+    }[];
     notes: string | null;
   };
 };

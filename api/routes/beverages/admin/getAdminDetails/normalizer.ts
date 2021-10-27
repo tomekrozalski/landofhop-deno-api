@@ -1,9 +1,10 @@
 import { lodash } from "lodash";
-// import format from "date-fns/format";
+import format from "date-fns/format";
 
+import type { Price } from "/api/models/beverage/details/fragments/Price.d.ts";
 import type { Tale } from "/api/models/beverage/details/fragments/Tale.d.ts";
 import type { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
-// import { DateFormat } from "/api/utils/enums/DateFormat.enum.ts";
+import { DateFormat } from "/api/utils/enums/DateFormat.enum.ts";
 import { Beverage as BeverageTypes } from "/api/models/beverage/details/Beverage.d.ts";
 import type { AdminDetailsOutput } from "./AdminDetailsOutput.d.ts";
 
@@ -12,6 +13,20 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
     return {
       language: language ?? "--",
       value,
+    };
+  }
+
+  function normalizePrice({ currency, date, shop, value }: Price): {
+    currency: string;
+    date: string;
+    shop: string | null;
+    value: string;
+  } {
+    return {
+      currency,
+      date: format(new Date(date), DateFormat.pl, {}),
+      shop: shop ?? null,
+      value: value.toString(),
     };
   }
 
@@ -66,6 +81,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         unit: beverage.label.container.unit,
         value: +beverage.label.container.value,
       },
+      price: beverage.label.price?.map(normalizePrice) ?? [],
     },
     producer: {
       series:
@@ -94,6 +110,8 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       },
       filtration: beverage.producer?.brewing?.filtration ?? null,
       pasteurization: beverage.producer?.brewing?.pasteurization ?? null,
+      // -----------
+      price: beverage.producer?.price?.map(normalizePrice) ?? [],
     },
     editorial: {
       cooperation:
@@ -110,6 +128,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       filtration: beverage.editorial?.brewing?.filtration ?? null,
       pasteurization: beverage.editorial?.brewing?.pasteurization ?? null,
       // -----------
+      price: beverage.editorial?.price?.map(normalizePrice) ?? [],
       notes: beverage.editorial?.notes ?? null,
     },
   };

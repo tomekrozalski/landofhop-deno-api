@@ -6,6 +6,7 @@ import {
   ExtractUnit,
 } from "/api/models/beverage/enums.ts";
 import type { Institution } from "/api/models/beverage/details/fragments/Institution.d.ts";
+import type { Price } from "/api/models/beverage/details/fragments/Price.d.ts";
 import type { Tale } from "/api/models/beverage/details/fragments/Tale.d.ts";
 import type { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
 import { Container } from "/api/models/beverage/details/fragments/Container.d.ts";
@@ -39,6 +40,7 @@ export type RequestTypes = {
     pasteurization?: boolean;
     // -----------
     container: Container;
+    price?: Price[];
   };
   producer?: {
     series?: LanguageValue[];
@@ -61,6 +63,8 @@ export type RequestTypes = {
     };
     filtration?: boolean;
     pasteurization?: boolean;
+    // -----------
+    price?: Price[];
   };
   editorial?: {
     cooperation?: Institution[];
@@ -72,6 +76,7 @@ export type RequestTypes = {
     filtration?: boolean;
     pasteurization?: boolean;
     // -----------
+    price?: Price[];
     notes?: string;
   };
 };
