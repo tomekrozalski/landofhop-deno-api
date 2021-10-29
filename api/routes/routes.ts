@@ -20,6 +20,8 @@ import { addBeverageGallery } from "./beverages/admin/photos/addBeverageGallery.
 import { getAdminDetails } from "./beverages/admin/getAdminDetails/getAdminDetails.ts";
 import { updateBeverage } from "./beverages/admin/updateBeverage.ts";
 import { updateBasics } from "./beverages/admin/updateBasics.ts";
+import { getPlaces } from "./places/getPlaces.ts";
+import { addPlace } from "./places/addPlace.ts";
 
 const router = new Router();
 
@@ -54,6 +56,8 @@ router
     authenticate,
     updateBeverage,
     updateBasics
-  );
+  )
+  .get("/admin/place", authenticate, getPlaces)
+  .post("/admin/place", authenticate, addPlace, getPlaces);
 
 export default router;

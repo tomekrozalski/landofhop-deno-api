@@ -47,7 +47,7 @@ export type AdminDetailsOutput = {
       value: string | null;
       unit: AlcoholUnit | null;
       relate: AlcoholRelate | null;
-      scope: AlcoholScope | "--" | null;
+      scope: AlcoholScope | string | null;
     };
     filtration: boolean | null;
     pasteurization: boolean | null;
