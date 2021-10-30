@@ -21,6 +21,11 @@ export type RequestTypes = {
     brand: Institution;
     cooperation?: Institution[];
     contract?: string;
+    place?: {
+      city: LanguageValue[];
+      country: string;
+      shortId: string;
+    };
     isContract?: true;
     tale?: Tale[];
     barcode?: string;
@@ -49,6 +54,11 @@ export type RequestTypes = {
     cooperation?: Institution[];
     contract?: string;
     isContract?: true;
+    place?: {
+      city: LanguageValue[];
+      country: string;
+      shortId: string;
+    };
     tale?: Tale[];
     // -----------
     fermentation?: Fermentation[];
@@ -73,6 +83,11 @@ export type RequestTypes = {
     cooperation?: Institution[];
     contract?: string;
     isContract?: true;
+    place?: {
+      city: LanguageValue[];
+      country: string;
+      shortId: string;
+    };
     // -----------
     fermentation?: Fermentation[];
     style?: LanguageValue[];

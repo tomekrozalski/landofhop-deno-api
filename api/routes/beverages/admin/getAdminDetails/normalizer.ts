@@ -51,6 +51,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       contract:
         beverage.label.general?.contract?.shortId ??
         (beverage.label.general?.isContract ? "--" : null),
+      place: beverage.label.general?.place?.shortId ?? null,
       tale: beverage.label.general?.tale?.map(normalizeTale) ?? [],
       barcode: beverage.label.general?.barcode ?? null,
       // -----------
@@ -93,6 +94,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       contract:
         beverage.producer?.general?.contract?.shortId ??
         (beverage.producer?.general?.isContract ? "--" : null),
+      place: beverage.producer?.general?.place?.shortId ?? null,
       tale: beverage.producer?.general?.tale?.map(normalizeTale) ?? [],
       // -----------
       fermentation: beverage.producer?.brewing?.fermentation ?? null,
@@ -122,6 +124,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       contract:
         beverage.editorial?.general?.contract?.shortId ??
         (beverage.editorial?.general?.isContract ? "--" : null),
+      place: beverage.editorial?.general?.place?.shortId ?? null,
       // -----------
       fermentation: beverage.editorial?.brewing?.fermentation ?? null,
       style:

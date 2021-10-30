@@ -39,7 +39,7 @@ router
   .post("/authorize", authorize)
   .get("/unauthorize", unauthorize)
   .get("/verifyToken", authenticate, verifyToken)
-  .get("/admin/institutions", authenticate, getInstitutions)
+  .get("/admin/institution", authenticate, getInstitutions)
   .post("/admin/institution", authenticate, addInstitution, getInstitutions)
   .post("/admin/beverage", authenticate, addBeverage)
   .get(

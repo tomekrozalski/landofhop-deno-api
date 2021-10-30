@@ -26,6 +26,7 @@ export type AdminDetailsOutput = {
     brand: string;
     cooperation: string[] | null;
     contract: string | null;
+    place: string | null;
     tale: {
       article: string;
       language: string;
@@ -75,6 +76,7 @@ export type AdminDetailsOutput = {
     }[];
     cooperation: string[] | null;
     contract: string | null;
+    place: string | null;
     tale: {
       article: string;
       language: string;
@@ -110,6 +112,7 @@ export type AdminDetailsOutput = {
   editorial: {
     cooperation: string[] | null;
     contract: string | null;
+    place: string | null;
     // -----------
     fermentation: Fermentation[] | null;
     style: {
