@@ -11,7 +11,8 @@ import type { DetailsOutput, InsitutionOutput } from "./DetailsOutput.d.ts";
 
 export function normalizer(
   beverage: BeverageTypes,
-  desiredLanguage: AppLanguage
+  desiredLanguage: AppLanguage,
+  countries: { [value: string]: string }
 ): DetailsOutput {
   function formatIntitution({
     badge,
@@ -79,7 +80,7 @@ export function normalizer(
       ...(beverage.label.general.place?.city && {
         label: {
           city: translate(beverage.label.general.place.city, desiredLanguage),
-          country: beverage.label.general.place.country,
+          country: countries[beverage.label.general.place.country],
         },
       }),
       ...(beverage.producer?.general?.place?.city && {
@@ -88,7 +89,7 @@ export function normalizer(
             beverage.producer.general.place.city,
             desiredLanguage
           ),
-          country: beverage.producer.general.place.country,
+          country: countries[beverage.producer.general.place.country],
         },
       }),
       ...(beverage.editorial?.general?.place?.city && {
@@ -97,7 +98,7 @@ export function normalizer(
             beverage.editorial.general.place.city,
             desiredLanguage
           ),
-          country: beverage.editorial.general.place.country,
+          country: countries[beverage.editorial.general.place.country],
         },
       }),
     },

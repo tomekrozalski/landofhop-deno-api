@@ -51,7 +51,16 @@ export async function getDetails(ctx: RouterContext) {
       });
     });
 
-  const formattedDetails: DetailsOutput = detailsNormalizer(value, language);
+  const response = await fetch(
+    `${Deno.env.get("IMAGES_API")}/countries/${language}`
+  );
+  const countries = await response.json();
+
+  const formattedDetails: DetailsOutput = detailsNormalizer(
+    value,
+    language,
+    countries
+  );
 
   const augmentedDetails: AugmentedDetailsOutput = {
     previous: previousBasics.length ? previousBasics[0] : null,
