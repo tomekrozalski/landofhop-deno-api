@@ -1,4 +1,3 @@
-import { lodash } from "lodash";
 import format from "date-fns/format";
 
 import type { Price } from "/api/models/beverage/details/fragments/Price.d.ts";
@@ -52,6 +51,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         beverage.label.general?.contract?.shortId ??
         (beverage.label.general?.isContract ? "--" : null),
       place: beverage.label.general?.place?.shortId ?? null,
+      remark: beverage.label.general?.remark?.map(normalizeLanguageValue) ?? [],
       tale: beverage.label.general?.tale?.map(normalizeTale) ?? [],
       barcode: beverage.label.general?.barcode ?? null,
       // -----------
@@ -95,6 +95,8 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         beverage.producer?.general?.contract?.shortId ??
         (beverage.producer?.general?.isContract ? "--" : null),
       place: beverage.producer?.general?.place?.shortId ?? null,
+      remark:
+        beverage.producer?.general?.remark?.map(normalizeLanguageValue) ?? [],
       tale: beverage.producer?.general?.tale?.map(normalizeTale) ?? [],
       // -----------
       fermentation: beverage.producer?.brewing?.fermentation ?? null,
@@ -125,6 +127,8 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         beverage.editorial?.general?.contract?.shortId ??
         (beverage.editorial?.general?.isContract ? "--" : null),
       place: beverage.editorial?.general?.place?.shortId ?? null,
+      remark:
+        beverage.editorial?.general?.remark?.map(normalizeLanguageValue) ?? [],
       // -----------
       fermentation: beverage.editorial?.brewing?.fermentation ?? null,
       style:

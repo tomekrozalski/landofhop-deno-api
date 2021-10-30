@@ -26,6 +26,7 @@ export type RequestTypes = {
       country: string;
       shortId: string;
     };
+    remark?: LanguageValue[];
     isContract?: true;
     tale?: Tale[];
     barcode?: string;
@@ -59,6 +60,7 @@ export type RequestTypes = {
       country: string;
       shortId: string;
     };
+    remark?: LanguageValue[];
     tale?: Tale[];
     // -----------
     fermentation?: Fermentation[];
@@ -88,6 +90,7 @@ export type RequestTypes = {
       country: string;
       shortId: string;
     };
+    remark?: LanguageValue[];
     // -----------
     fermentation?: Fermentation[];
     style?: LanguageValue[];

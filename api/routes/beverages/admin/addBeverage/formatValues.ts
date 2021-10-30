@@ -42,6 +42,7 @@ export function formatBeverage(
         contract: label.contract,
         isContract: label.isContract,
         place: label.place,
+        remark: label.remark,
         tale: label.tale,
         barcode: label.barcode,
       },
@@ -66,6 +67,7 @@ export function formatBeverage(
         contract: producer?.contract,
         isContract: producer?.isContract,
         place: producer?.place,
+        remark: producer?.remark,
         tale: producer?.tale,
       },
       brewing: {
@@ -87,6 +89,7 @@ export function formatBeverage(
         contract: editorial?.contract,
         isContract: editorial?.isContract,
         place: editorial?.place,
+        remark: editorial?.remark,
       },
       brewing: {
         fermentation: editorial?.fermentation,

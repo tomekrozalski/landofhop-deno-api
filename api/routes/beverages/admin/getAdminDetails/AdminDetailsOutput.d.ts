@@ -27,6 +27,10 @@ export type AdminDetailsOutput = {
     cooperation: string[] | null;
     contract: string | null;
     place: string | null;
+    remark: {
+      language: string;
+      value: string;
+    }[];
     tale: {
       article: string;
       language: string;
@@ -77,6 +81,10 @@ export type AdminDetailsOutput = {
     cooperation: string[] | null;
     contract: string | null;
     place: string | null;
+    remark: {
+      language: string;
+      value: string;
+    }[];
     tale: {
       article: string;
       language: string;
@@ -113,6 +121,10 @@ export type AdminDetailsOutput = {
     cooperation: string[] | null;
     contract: string | null;
     place: string | null;
+    remark: {
+      language: string;
+      value: string;
+    }[];
     // -----------
     fermentation: Fermentation[] | null;
     style: {

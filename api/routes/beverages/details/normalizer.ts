@@ -109,6 +109,12 @@ export function normalizer(
       ...(beverage.producer?.general?.remark && {
         producer: translate(beverage.producer.general.remark, desiredLanguage),
       }),
+      ...(beverage.editorial?.general?.remark && {
+        editorial: translate(
+          beverage.editorial.general.remark,
+          desiredLanguage
+        ),
+      }),
     },
     tale: {
       ...(beverage.label.general.tale && {
