@@ -73,6 +73,12 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       filtration: beverage.label.brewing?.filtration ?? null,
       pasteurization: beverage.label.brewing?.pasteurization ?? null,
       // -----------
+      bitterness: beverage.label.impressions?.bitterness ?? null,
+      sweetness: beverage.label.impressions?.sweetness ?? null,
+      fullness: beverage.label.impressions?.fullness ?? null,
+      power: beverage.label.impressions?.power ?? null,
+      hoppyness: beverage.label.impressions?.hoppyness ?? null,
+      // -----------
       container: {
         color: beverage.label.container.color,
         hasCapWireFlip: beverage.label.container.hasCapWireFlip ?? false,
@@ -115,6 +121,12 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       },
       filtration: beverage.producer?.brewing?.filtration ?? null,
       pasteurization: beverage.producer?.brewing?.pasteurization ?? null,
+      // -----------
+      bitterness: beverage.producer?.impressions?.bitterness ?? null,
+      sweetness: beverage.producer?.impressions?.sweetness ?? null,
+      fullness: beverage.producer?.impressions?.fullness ?? null,
+      power: beverage.producer?.impressions?.power ?? null,
+      hoppyness: beverage.producer?.impressions?.hoppyness ?? null,
       // -----------
       price: beverage.producer?.price?.map(normalizePrice) ?? [],
     },

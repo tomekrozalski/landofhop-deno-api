@@ -54,6 +54,13 @@ export function formatBeverage(
         filtration: label.filtration,
         pasteurization: label.pasteurization,
       },
+      impressions: {
+        bitterness: label.bitterness,
+        sweetness: label.sweetness,
+        fullness: label.fullness,
+        power: label.power,
+        hoppyness: label.hoppyness,
+      },
       container: label.container,
       price: label.price?.map((props) => ({
         ...props,
@@ -77,6 +84,13 @@ export function formatBeverage(
         alcohol: producer?.alcohol,
         filtration: producer?.filtration,
         pasteurization: producer?.pasteurization,
+      },
+      impressions: {
+        bitterness: producer?.bitterness,
+        sweetness: producer?.sweetness,
+        fullness: producer?.fullness,
+        power: producer?.power,
+        hoppyness: producer?.hoppyness,
       },
       price: producer?.price?.map((props) => ({
         ...props,

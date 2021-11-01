@@ -47,6 +47,12 @@ export type RequestTypes = {
     filtration?: boolean;
     pasteurization?: boolean;
     // -----------
+    bitterness?: number;
+    sweetness?: number;
+    fullness?: number;
+    power?: number;
+    hoppyness?: number;
+    // -----------
     container: Container;
     price?: Price[];
   };
@@ -78,6 +84,12 @@ export type RequestTypes = {
     };
     filtration?: boolean;
     pasteurization?: boolean;
+    // -----------
+    bitterness?: number;
+    sweetness?: number;
+    fullness?: number;
+    power?: number;
+    hoppyness?: number;
     // -----------
     price?: Price[];
   };

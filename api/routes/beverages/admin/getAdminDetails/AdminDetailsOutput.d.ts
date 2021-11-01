@@ -57,6 +57,12 @@ export type AdminDetailsOutput = {
     filtration: boolean | null;
     pasteurization: boolean | null;
     // -----------
+    bitterness: number | null;
+    sweetness: number | null;
+    fullness: number | null;
+    power: number | null;
+    hoppyness: number | null;
+    // -----------
     container: {
       color: ContainerColor;
       hasCapWireFlip: boolean;
@@ -109,6 +115,12 @@ export type AdminDetailsOutput = {
     };
     filtration: boolean | null;
     pasteurization: boolean | null;
+    // -----------
+    bitterness: number | null;
+    sweetness: number | null;
+    fullness: number | null;
+    power: number | null;
+    hoppyness: number | null;
     // -----------
     price: {
       currency: string;
