@@ -3,6 +3,7 @@ import { RouterContext } from "oak";
 import { AppLanguage } from "/api/utils/enums/AppLanguage.enum.ts";
 import { basics, beverages } from "/db.ts";
 import { respondWith } from "/api/utils/respondWith.ts";
+import { countries } from "/api/utils/countries.ts";
 import { normalizer as detailsNormalizer } from "./normalizer.ts";
 import type { DetailsOutput } from "./DetailsOutput.d.ts";
 import type { LinkDataOutput } from "./LinkDataOutput.d.ts";
@@ -51,15 +52,10 @@ export async function getDetails(ctx: RouterContext) {
       });
     });
 
-  const response = await fetch(
-    `${Deno.env.get("IMAGES_API")}/countries/${language}`
-  );
-  const countries = await response.json();
-
   const formattedDetails: DetailsOutput = detailsNormalizer(
     value,
     language,
-    countries
+    language === "pl" ? countries.pl : countries.en
   );
 
   const augmentedDetails: AugmentedDetailsOutput = {
