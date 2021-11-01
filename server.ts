@@ -12,8 +12,11 @@ const app = new Application();
 // Set CORS
 app.use(
   oakCors(({ url }) => ({
-    origin: "*",
-    methods: ["OPTIONS", "GET"],
+    origin: [
+      "http://localhost:3000",
+      "https://hop.land",
+      "https://landofhop.com",
+    ],
     credentials:
       ["/authorize", "/unauthorize", "/verifyToken"].includes(url.pathname) ||
       !!url.pathname.match(/\/admin\//),
