@@ -56,6 +56,10 @@ export type AdminDetailsOutput = {
     };
     filtration: boolean | null;
     pasteurization: boolean | null;
+    hopRate: {
+      value: string | null;
+      unit: string | null;
+    };
     // -----------
     bitterness: number | null;
     sweetness: number | null;
@@ -115,6 +119,10 @@ export type AdminDetailsOutput = {
     };
     filtration: boolean | null;
     pasteurization: boolean | null;
+    hopRate: {
+      value: string | null;
+      unit: string | null;
+    };
     // -----------
     bitterness: number | null;
     sweetness: number | null;

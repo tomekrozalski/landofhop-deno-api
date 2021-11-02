@@ -53,6 +53,7 @@ export function formatBeverage(
         alcohol: label.alcohol,
         filtration: label.filtration,
         pasteurization: label.pasteurization,
+        hopRate: label.hopRate,
       },
       impressions: {
         bitterness: label.bitterness,
@@ -84,6 +85,7 @@ export function formatBeverage(
         alcohol: producer?.alcohol,
         filtration: producer?.filtration,
         pasteurization: producer?.pasteurization,
+        hopRate: producer?.hopRate,
       },
       impressions: {
         bitterness: producer?.bitterness,

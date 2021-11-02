@@ -72,6 +72,10 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       },
       filtration: beverage.label.brewing?.filtration ?? null,
       pasteurization: beverage.label.brewing?.pasteurization ?? null,
+      hopRate: {
+        value: beverage.label.brewing?.hopRate?.value?.toString() ?? null,
+        unit: beverage.label.brewing?.hopRate?.unit ?? null,
+      },
       // -----------
       bitterness: beverage.label.impressions?.bitterness ?? null,
       sweetness: beverage.label.impressions?.sweetness ?? null,
@@ -121,6 +125,10 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       },
       filtration: beverage.producer?.brewing?.filtration ?? null,
       pasteurization: beverage.producer?.brewing?.pasteurization ?? null,
+      hopRate: {
+        value: beverage.producer?.brewing?.hopRate?.value?.toString() ?? null,
+        unit: beverage.producer?.brewing?.hopRate?.unit ?? null,
+      },
       // -----------
       bitterness: beverage.producer?.impressions?.bitterness ?? null,
       sweetness: beverage.producer?.impressions?.sweetness ?? null,
