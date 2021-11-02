@@ -61,6 +61,7 @@ export function formatBeverage(
         fullness: label.fullness,
         power: label.power,
         hoppyness: label.hoppyness,
+        temperature: label.temperature,
       },
       container: label.container,
       price: label.price?.map((props) => ({
@@ -93,6 +94,7 @@ export function formatBeverage(
         fullness: producer?.fullness,
         power: producer?.power,
         hoppyness: producer?.hoppyness,
+        temperature: producer?.temperature,
       },
       price: producer?.price?.map((props) => ({
         ...props,

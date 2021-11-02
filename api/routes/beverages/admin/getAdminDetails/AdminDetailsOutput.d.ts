@@ -66,6 +66,11 @@ export type AdminDetailsOutput = {
     fullness: number | null;
     power: number | null;
     hoppyness: number | null;
+    temperature: {
+      from: string | null;
+      to: string | null;
+      unit: string | null;
+    };
     // -----------
     container: {
       color: ContainerColor;
@@ -129,6 +134,11 @@ export type AdminDetailsOutput = {
     fullness: number | null;
     power: number | null;
     hoppyness: number | null;
+    temperature: {
+      from: string | null;
+      to: string | null;
+      unit: string | null;
+    };
     // -----------
     price: {
       currency: string;

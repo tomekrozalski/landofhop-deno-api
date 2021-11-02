@@ -56,6 +56,11 @@ export type RequestTypes = {
     fullness?: number;
     power?: number;
     hoppyness?: number;
+    temperature?: {
+      from: number;
+      to: number;
+      unit: string;
+    };
     // -----------
     container: Container;
     price?: Price[];
@@ -98,6 +103,11 @@ export type RequestTypes = {
     fullness?: number;
     power?: number;
     hoppyness?: number;
+    temperature?: {
+      from: number;
+      to: number;
+      unit: string;
+    };
     // -----------
     price?: Price[];
   };
