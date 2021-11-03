@@ -76,6 +76,11 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         value: beverage.label.brewing?.hopRate?.value?.toString() ?? null,
         unit: beverage.label.brewing?.hopRate?.unit ?? null,
       },
+      expirationDate: {
+        value:
+          beverage.label.brewing?.expirationDate?.value?.toString() ?? null,
+        unit: beverage.label.brewing?.expirationDate?.unit ?? null,
+      },
       // -----------
       bitterness: beverage.label.impressions?.bitterness ?? null,
       sweetness: beverage.label.impressions?.sweetness ?? null,
@@ -133,6 +138,11 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       hopRate: {
         value: beverage.producer?.brewing?.hopRate?.value?.toString() ?? null,
         unit: beverage.producer?.brewing?.hopRate?.unit ?? null,
+      },
+      expirationDate: {
+        value:
+          beverage.producer?.brewing?.expirationDate?.value?.toString() ?? null,
+        unit: beverage.producer?.brewing?.expirationDate?.unit ?? null,
       },
       // -----------
       bitterness: beverage.producer?.impressions?.bitterness ?? null,

@@ -54,6 +54,7 @@ export function formatBeverage(
         filtration: label.filtration,
         pasteurization: label.pasteurization,
         hopRate: label.hopRate,
+        expirationDate: label.expirationDate,
       },
       impressions: {
         bitterness: label.bitterness,
@@ -87,6 +88,7 @@ export function formatBeverage(
         filtration: producer?.filtration,
         pasteurization: producer?.pasteurization,
         hopRate: producer?.hopRate,
+        expirationDate: producer?.expirationDate,
       },
       impressions: {
         bitterness: producer?.bitterness,

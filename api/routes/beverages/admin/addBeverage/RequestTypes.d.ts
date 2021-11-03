@@ -50,6 +50,10 @@ export type RequestTypes = {
       value: number;
       unit: string;
     };
+    expirationDate?: {
+      value: number;
+      unit: string;
+    };
     // -----------
     bitterness?: number;
     sweetness?: number;
@@ -94,6 +98,10 @@ export type RequestTypes = {
     filtration?: boolean;
     pasteurization?: boolean;
     hopRate?: {
+      value: number;
+      unit: string;
+    };
+    expirationDate?: {
       value: number;
       unit: string;
     };
