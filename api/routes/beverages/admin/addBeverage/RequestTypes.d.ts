@@ -63,6 +63,7 @@ export type RequestTypes = {
       value: number;
       unit: string;
     };
+    nitrogen?: boolean;
     expirationDate?: {
       value: number;
       unit: string;
@@ -123,6 +124,7 @@ export type RequestTypes = {
       value: number;
       unit: string;
     };
+    nitrogen?: boolean;
     expirationDate?: {
       value: number;
       unit: string;
@@ -166,6 +168,7 @@ export type RequestTypes = {
       type?: AgedType;
       wood?: AgedWood;
     }[];
+    nitrogen?: boolean;
     // -----------
     price?: Price[];
     notes?: string;

@@ -87,6 +87,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         value: beverage.label.brewing?.hopRate?.value?.toString() ?? null,
         unit: beverage.label.brewing?.hopRate?.unit ?? null,
       },
+      nitrogen: beverage.label.brewing?.nitrogen ?? null,
       expirationDate: {
         value:
           beverage.label.brewing?.expirationDate?.value?.toString() ?? null,
@@ -160,6 +161,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         value: beverage.producer?.brewing?.hopRate?.value?.toString() ?? null,
         unit: beverage.producer?.brewing?.hopRate?.unit ?? null,
       },
+      nitrogen: beverage.producer?.brewing?.nitrogen ?? null,
       expirationDate: {
         value:
           beverage.producer?.brewing?.expirationDate?.value?.toString() ?? null,
@@ -208,6 +210,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
           },
           previousContent: props.previousContent ?? [],
         })) ?? [],
+      nitrogen: beverage.editorial?.brewing?.nitrogen ?? null,
       // -----------
       price: beverage.editorial?.price?.map(normalizePrice) ?? [],
       notes: beverage.editorial?.notes ?? null,

@@ -73,6 +73,7 @@ export type AdminDetailsOutput = {
       value: string | null;
       unit: string | null;
     };
+    nitrogen: boolean | null;
     expirationDate: {
       value: string | null;
       unit: string | null;
@@ -154,6 +155,7 @@ export type AdminDetailsOutput = {
       value: string | null;
       unit: string | null;
     };
+    nitrogen: boolean | null;
     expirationDate: {
       value: string | null;
       unit: string | null;
@@ -203,6 +205,7 @@ export type AdminDetailsOutput = {
       type: AgedType | null;
       wood: AgedWood | null;
     }[];
+    nitrogen: boolean | null;
     // -----------
     price: {
       currency: string;

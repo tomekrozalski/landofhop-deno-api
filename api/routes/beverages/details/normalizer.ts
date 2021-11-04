@@ -285,6 +285,17 @@ export function normalizer(
         },
       }),
     },
+    nitrogen: {
+      ...(lodash.isBoolean(beverage.label.brewing?.nitrogen) && {
+        label: beverage.label.brewing?.nitrogen,
+      }),
+      ...(lodash.isBoolean(beverage.producer?.brewing?.nitrogen) && {
+        producer: beverage.producer?.brewing?.nitrogen,
+      }),
+      ...(lodash.isBoolean(beverage.editorial?.brewing?.nitrogen) && {
+        editorial: beverage.editorial?.brewing?.nitrogen,
+      }),
+    },
     expirationDate: {
       ...(beverage.label.brewing?.expirationDate && {
         label: beverage.label.brewing.expirationDate,
@@ -469,6 +480,7 @@ export function normalizer(
       "isDryHopped",
       "dryHopped",
       "hopRate",
+      "nitrogen",
       "expirationDate",
       "ingredients",
       "ingredientsTags",

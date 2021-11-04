@@ -29,6 +29,7 @@ export type EditorialBrewing = {
   style?: LanguageValue[];
   isDryHopped?: boolean;
   dryHopped?: IngredientTag[];
+  nitrogen?: boolean;
 };
 
 export type EditorialImpressions = {

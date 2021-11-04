@@ -35,6 +35,7 @@ export type Brewing = {
     unit: HopRateUnit;
     value: number;
   };
+  nitrogen?: boolean;
   expirationDate?: {
     value: number;
     unit: ExpirationDateUnit;
