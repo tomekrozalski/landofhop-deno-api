@@ -1,4 +1,8 @@
 import {
+  AgedPreviousContent,
+  AgedTimeUnit,
+  AgedType,
+  AgedWood,
   AlcoholRelate,
   AlcoholUnit,
   AlcoholScope,
@@ -56,6 +60,15 @@ export type AdminDetailsOutput = {
     };
     filtration: boolean | null;
     pasteurization: boolean | null;
+    aged: {
+      previousContent: AgedPreviousContent[];
+      time: {
+        value: string;
+        unit: AgedTimeUnit;
+      };
+      type: AgedType | null;
+      wood: AgedWood | null;
+    }[];
     hopRate: {
       value: string | null;
       unit: string | null;
@@ -128,6 +141,15 @@ export type AdminDetailsOutput = {
     };
     filtration: boolean | null;
     pasteurization: boolean | null;
+    aged: {
+      previousContent: AgedPreviousContent[];
+      time: {
+        value: string;
+        unit: AgedTimeUnit;
+      };
+      type: AgedType | null;
+      wood: AgedWood | null;
+    }[];
     hopRate: {
       value: string | null;
       unit: string | null;
@@ -172,6 +194,15 @@ export type AdminDetailsOutput = {
     alcoholScope: AlcoholScope | null;
     filtration: boolean | null;
     pasteurization: boolean | null;
+    aged: {
+      previousContent: AgedPreviousContent[];
+      time: {
+        value: string;
+        unit: AgedTimeUnit;
+      };
+      type: AgedType | null;
+      wood: AgedWood | null;
+    }[];
     // -----------
     price: {
       currency: string;

@@ -53,6 +53,7 @@ export function formatBeverage(
         alcohol: label.alcohol,
         filtration: label.filtration,
         pasteurization: label.pasteurization,
+        aged: label.aged,
         hopRate: label.hopRate,
         expirationDate: label.expirationDate,
       },
@@ -87,6 +88,7 @@ export function formatBeverage(
         alcohol: producer?.alcohol,
         filtration: producer?.filtration,
         pasteurization: producer?.pasteurization,
+        aged: producer?.aged,
         hopRate: producer?.hopRate,
         expirationDate: producer?.expirationDate,
       },
@@ -119,6 +121,7 @@ export function formatBeverage(
         },
         filtration: editorial?.filtration,
         pasteurization: editorial?.pasteurization,
+        aged: editorial?.aged,
       },
       price: editorial?.price?.map((props) => ({
         ...props,

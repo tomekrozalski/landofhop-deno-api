@@ -4,6 +4,7 @@ import type { Price } from "/api/models/beverage/details/fragments/Price.d.ts";
 import type { Tale } from "/api/models/beverage/details/fragments/Tale.d.ts";
 import type { LanguageValue } from "/api/models/common/LanguageValue.d.ts";
 import { DateFormat } from "/api/utils/enums/DateFormat.enum.ts";
+import { AgedTimeUnit } from "/api/models/beverage/enums.ts";
 import { Beverage as BeverageTypes } from "/api/models/beverage/details/Beverage.d.ts";
 import type { AdminDetailsOutput } from "./AdminDetailsOutput.d.ts";
 
@@ -72,6 +73,16 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       },
       filtration: beverage.label.brewing?.filtration ?? null,
       pasteurization: beverage.label.brewing?.pasteurization ?? null,
+      aged:
+        beverage.label.brewing?.aged?.map((props) => ({
+          type: props.type ?? null,
+          wood: props.wood ?? null,
+          time: {
+            value: props.time?.value?.toString() ?? "0",
+            unit: props.time?.unit ?? AgedTimeUnit.month,
+          },
+          previousContent: props.previousContent ?? [],
+        })) ?? [],
       hopRate: {
         value: beverage.label.brewing?.hopRate?.value?.toString() ?? null,
         unit: beverage.label.brewing?.hopRate?.unit ?? null,
@@ -135,6 +146,16 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       },
       filtration: beverage.producer?.brewing?.filtration ?? null,
       pasteurization: beverage.producer?.brewing?.pasteurization ?? null,
+      aged:
+        beverage.producer?.brewing?.aged?.map((props) => ({
+          type: props.type ?? null,
+          wood: props.wood ?? null,
+          time: {
+            value: props.time?.value?.toString() ?? "0",
+            unit: props.time?.unit ?? AgedTimeUnit.month,
+          },
+          previousContent: props.previousContent ?? [],
+        })) ?? [],
       hopRate: {
         value: beverage.producer?.brewing?.hopRate?.value?.toString() ?? null,
         unit: beverage.producer?.brewing?.hopRate?.unit ?? null,
@@ -177,6 +198,16 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       alcoholScope: beverage.editorial?.brewing?.alcohol?.scope ?? null,
       filtration: beverage.editorial?.brewing?.filtration ?? null,
       pasteurization: beverage.editorial?.brewing?.pasteurization ?? null,
+      aged:
+        beverage.editorial?.brewing?.aged?.map((props) => ({
+          type: props.type ?? null,
+          wood: props.wood ?? null,
+          time: {
+            value: props.time?.value?.toString() ?? "0",
+            unit: props.time?.unit ?? AgedTimeUnit.month,
+          },
+          previousContent: props.previousContent ?? [],
+        })) ?? [],
       // -----------
       price: beverage.editorial?.price?.map(normalizePrice) ?? [],
       notes: beverage.editorial?.notes ?? null,

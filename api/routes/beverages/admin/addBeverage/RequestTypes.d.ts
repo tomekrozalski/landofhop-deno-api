@@ -1,4 +1,8 @@
 import {
+  AgedPreviousContent,
+  AgedTimeUnit,
+  AgedType,
+  AgedWood,
   AlcoholRelate,
   AlcoholScope,
   AlcoholUnit,
@@ -46,6 +50,15 @@ export type RequestTypes = {
     };
     filtration?: boolean;
     pasteurization?: boolean;
+    aged?: {
+      previousContent?: AgedPreviousContent[];
+      time?: {
+        value: number;
+        unit: AgedTimeUnit;
+      };
+      type?: AgedType;
+      wood?: AgedWood;
+    }[];
     hopRate?: {
       value: number;
       unit: string;
@@ -97,6 +110,15 @@ export type RequestTypes = {
     };
     filtration?: boolean;
     pasteurization?: boolean;
+    aged?: {
+      previousContent?: AgedPreviousContent[];
+      time?: {
+        value: number;
+        unit: AgedTimeUnit;
+      };
+      type?: AgedType;
+      wood?: AgedWood;
+    }[];
     hopRate?: {
       value: number;
       unit: string;
@@ -135,6 +157,15 @@ export type RequestTypes = {
     alcoholScope?: AlcoholScope;
     filtration?: boolean;
     pasteurization?: boolean;
+    aged?: {
+      previousContent?: AgedPreviousContent[];
+      time?: {
+        value: number;
+        unit: AgedTimeUnit;
+      };
+      type?: AgedType;
+      wood?: AgedWood;
+    }[];
     // -----------
     price?: Price[];
     notes?: string;
