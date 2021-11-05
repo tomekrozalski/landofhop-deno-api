@@ -94,6 +94,8 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         unit: beverage.label.brewing?.expirationDate?.unit ?? null,
       },
       // -----------
+      ingredients: beverage.label.ingredients?.descriptive ?? [],
+      // -----------
       bitterness: beverage.label.impressions?.bitterness ?? null,
       sweetness: beverage.label.impressions?.sweetness ?? null,
       fullness: beverage.label.impressions?.fullness ?? null,
@@ -167,6 +169,8 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
           beverage.producer?.brewing?.expirationDate?.value?.toString() ?? null,
         unit: beverage.producer?.brewing?.expirationDate?.unit ?? null,
       },
+      // -----------
+      ingredients: beverage.producer?.ingredients?.descriptive ?? [],
       // -----------
       bitterness: beverage.producer?.impressions?.bitterness ?? null,
       sweetness: beverage.producer?.impressions?.sweetness ?? null,

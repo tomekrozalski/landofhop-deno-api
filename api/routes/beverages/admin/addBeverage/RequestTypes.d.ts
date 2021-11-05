@@ -69,6 +69,12 @@ export type RequestTypes = {
       unit: string;
     };
     // -----------
+    ingredients?: {
+      complete: boolean;
+      language: string;
+      list: string[];
+    }[];
+    // -----------
     bitterness?: number;
     sweetness?: number;
     fullness?: number;
@@ -129,6 +135,12 @@ export type RequestTypes = {
       value: number;
       unit: string;
     };
+    // -----------
+    ingredients?: {
+      complete: boolean;
+      language: string;
+      list: string[];
+    }[];
     // -----------
     bitterness?: number;
     sweetness?: number;

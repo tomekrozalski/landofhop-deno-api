@@ -58,6 +58,9 @@ export function formatBeverage(
         nitrogen: label.nitrogen,
         expirationDate: label.expirationDate,
       },
+      ingredients: {
+        descriptive: label.ingredients,
+      },
       impressions: {
         bitterness: label.bitterness,
         sweetness: label.sweetness,
@@ -93,6 +96,9 @@ export function formatBeverage(
         hopRate: producer?.hopRate,
         nitrogen: producer?.nitrogen,
         expirationDate: producer?.expirationDate,
+      },
+      ingredients: {
+        descriptive: producer?.ingredients,
       },
       impressions: {
         bitterness: producer?.bitterness,

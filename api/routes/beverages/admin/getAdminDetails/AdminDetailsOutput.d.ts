@@ -79,6 +79,14 @@ export type AdminDetailsOutput = {
       unit: string | null;
     };
     // -----------
+    ingredients: {
+      complete: boolean;
+      language: string;
+      list: string[];
+    }[];
+    // ingredientTags: null,
+    // smokedMalt: null,
+    // -----------
     bitterness: number | null;
     sweetness: number | null;
     fullness: number | null;
@@ -160,6 +168,14 @@ export type AdminDetailsOutput = {
       value: string | null;
       unit: string | null;
     };
+    // -----------
+    ingredients: {
+      complete: boolean;
+      language: string;
+      list: string[];
+    }[];
+    // ingredientTags: null,
+    // smokedMalt: null,
     // -----------
     bitterness: number | null;
     sweetness: number | null;
