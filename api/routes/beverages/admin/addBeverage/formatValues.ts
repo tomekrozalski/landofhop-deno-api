@@ -60,6 +60,7 @@ export function formatBeverage(
       },
       ingredients: {
         descriptive: label.ingredients,
+        tags: label.ingredientTags,
       },
       impressions: {
         bitterness: label.bitterness,
@@ -99,6 +100,7 @@ export function formatBeverage(
       },
       ingredients: {
         descriptive: producer?.ingredients,
+        tags: producer?.ingredientTags,
       },
       impressions: {
         bitterness: producer?.bitterness,

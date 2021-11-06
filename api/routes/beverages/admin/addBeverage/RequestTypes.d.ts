@@ -10,6 +10,7 @@ import {
   ExtractUnit,
   Fermentation,
 } from "/api/models/beverage/enums.ts";
+import type { IngredientTag } from "/api/models/beverage/details/fragments/IngredientTag.d.ts";
 import type { Institution } from "/api/models/beverage/details/fragments/Institution.d.ts";
 import type { Price } from "/api/models/beverage/details/fragments/Price.d.ts";
 import type { Tale } from "/api/models/beverage/details/fragments/Tale.d.ts";
@@ -74,6 +75,7 @@ export type RequestTypes = {
       language: string;
       list: string[];
     }[];
+    ingredientTags?: IngredientTag[];
     // -----------
     bitterness?: number;
     sweetness?: number;
@@ -141,6 +143,7 @@ export type RequestTypes = {
       language: string;
       list: string[];
     }[];
+    ingredientTags?: IngredientTag[];
     // -----------
     bitterness?: number;
     sweetness?: number;

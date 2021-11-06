@@ -22,6 +22,7 @@ import { updateBeverage } from "./beverages/admin/updateBeverage.ts";
 import { updateBasics } from "./beverages/admin/updateBasics.ts";
 import { getPlaces } from "./places/getPlaces.ts";
 import { addPlace } from "./places/addPlace.ts";
+import { getIngredients } from "./ingredients/getIngredients.ts";
 
 const router = new Router();
 
@@ -58,6 +59,7 @@ router
     updateBasics
   )
   .get("/admin/place", authenticate, getPlaces)
-  .post("/admin/place", authenticate, addPlace, getPlaces);
+  .post("/admin/place", authenticate, addPlace, getPlaces)
+  .get("/admin/ingredient", authenticate, getIngredients);
 
 export default router;

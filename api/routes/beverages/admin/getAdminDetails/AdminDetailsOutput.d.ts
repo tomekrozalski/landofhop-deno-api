@@ -84,7 +84,7 @@ export type AdminDetailsOutput = {
       language: string;
       list: string[];
     }[];
-    // ingredientTags: null,
+    ingredientTags: string[] | null;
     // smokedMalt: null,
     // -----------
     bitterness: number | null;
@@ -174,7 +174,7 @@ export type AdminDetailsOutput = {
       language: string;
       list: string[];
     }[];
-    // ingredientTags: null,
+    ingredientTags: string[] | null;
     // smokedMalt: null,
     // -----------
     bitterness: number | null;
