@@ -61,6 +61,7 @@ export function formatBeverage(
       ingredients: {
         descriptive: label.ingredients,
         tags: label.ingredientTags,
+        smokedMalt: label.smokedMalt,
       },
       impressions: {
         bitterness: label.bitterness,
@@ -101,6 +102,7 @@ export function formatBeverage(
       ingredients: {
         descriptive: producer?.ingredients,
         tags: producer?.ingredientTags,
+        smokedMalt: producer?.smokedMalt,
       },
       impressions: {
         bitterness: producer?.bitterness,

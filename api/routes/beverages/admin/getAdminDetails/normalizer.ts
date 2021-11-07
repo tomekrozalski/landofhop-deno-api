@@ -97,6 +97,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       ingredients: beverage.label.ingredients?.descriptive ?? [],
       ingredientTags:
         beverage.label.ingredients?.tags?.map(({ badge }) => badge) ?? null,
+      smokedMalt: beverage.label.ingredients?.smokedMalt ?? null,
       // -----------
       bitterness: beverage.label.impressions?.bitterness ?? null,
       sweetness: beverage.label.impressions?.sweetness ?? null,
@@ -175,6 +176,7 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
       ingredients: beverage.producer?.ingredients?.descriptive ?? [],
       ingredientTags:
         beverage.producer?.ingredients?.tags?.map(({ badge }) => badge) ?? null,
+      smokedMalt: beverage.producer?.ingredients?.smokedMalt ?? null,
       // -----------
       bitterness: beverage.producer?.impressions?.bitterness ?? null,
       sweetness: beverage.producer?.impressions?.sweetness ?? null,

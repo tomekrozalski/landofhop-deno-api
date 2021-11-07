@@ -76,6 +76,7 @@ export type RequestTypes = {
       list: string[];
     }[];
     ingredientTags?: IngredientTag[];
+    smokedMalt?: boolean;
     // -----------
     bitterness?: number;
     sweetness?: number;
@@ -144,6 +145,7 @@ export type RequestTypes = {
       list: string[];
     }[];
     ingredientTags?: IngredientTag[];
+    smokedMalt?: boolean;
     // -----------
     bitterness?: number;
     sweetness?: number;
