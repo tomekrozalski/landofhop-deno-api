@@ -83,6 +83,9 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
           },
           previousContent: props.previousContent ?? [],
         })) ?? [],
+      dryHopped:
+        beverage.label.brewing?.dryHopped?.map(({ badge }) => badge) ??
+        (beverage.label.brewing?.isDryHopped ? [] : null),
       hopRate: {
         value: beverage.label.brewing?.hopRate?.value?.toString() ?? null,
         unit: beverage.label.brewing?.hopRate?.unit ?? null,
@@ -162,6 +165,9 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
           },
           previousContent: props.previousContent ?? [],
         })) ?? [],
+      dryHopped:
+        beverage.producer?.brewing?.dryHopped?.map(({ badge }) => badge) ??
+        (beverage.producer?.brewing?.isDryHopped ? [] : null),
       hopRate: {
         value: beverage.producer?.brewing?.hopRate?.value?.toString() ?? null,
         unit: beverage.producer?.brewing?.hopRate?.unit ?? null,
@@ -220,6 +226,9 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
           },
           previousContent: props.previousContent ?? [],
         })) ?? [],
+      dryHopped:
+        beverage.editorial?.brewing?.dryHopped?.map(({ badge }) => badge) ??
+        (beverage.editorial?.brewing?.isDryHopped ? [] : null),
       nitrogen: beverage.editorial?.brewing?.nitrogen ?? null,
       // -----------
       price: beverage.editorial?.price?.map(normalizePrice) ?? [],

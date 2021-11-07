@@ -60,6 +60,8 @@ export type RequestTypes = {
       type?: AgedType;
       wood?: AgedWood;
     }[];
+    isDryHopped?: boolean;
+    dryHopped?: IngredientTag[];
     hopRate?: {
       value: number;
       unit: string;
@@ -129,6 +131,8 @@ export type RequestTypes = {
       type?: AgedType;
       wood?: AgedWood;
     }[];
+    isDryHopped?: boolean;
+    dryHopped?: IngredientTag[];
     hopRate?: {
       value: number;
       unit: string;
@@ -185,6 +189,8 @@ export type RequestTypes = {
       type?: AgedType;
       wood?: AgedWood;
     }[];
+    isDryHopped?: boolean;
+    dryHopped?: IngredientTag[];
     nitrogen?: boolean;
     // -----------
     price?: Price[];

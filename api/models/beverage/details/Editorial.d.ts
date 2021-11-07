@@ -20,13 +20,13 @@ export type EditorialGeneral = {
 
 export type EditorialBrewing = {
   fermentation?: Fermentation[];
+  style?: LanguageValue[];
   alcohol?: {
     scope: AlcoholScope;
   };
   filtration?: boolean;
   pasteurization?: boolean;
   aged?: Aged[];
-  style?: LanguageValue[];
   isDryHopped?: boolean;
   dryHopped?: IngredientTag[];
   nitrogen?: boolean;

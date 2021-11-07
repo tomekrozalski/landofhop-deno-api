@@ -69,6 +69,7 @@ export type AdminDetailsOutput = {
       type: AgedType | null;
       wood: AgedWood | null;
     }[];
+    dryHopped: string[] | null;
     hopRate: {
       value: string | null;
       unit: string | null;
@@ -159,6 +160,7 @@ export type AdminDetailsOutput = {
       type: AgedType | null;
       wood: AgedWood | null;
     }[];
+    dryHopped: string[] | null;
     hopRate: {
       value: string | null;
       unit: string | null;
@@ -221,6 +223,7 @@ export type AdminDetailsOutput = {
       type: AgedType | null;
       wood: AgedWood | null;
     }[];
+    dryHopped: string[] | null;
     nitrogen: boolean | null;
     // -----------
     price: {
