@@ -231,6 +231,9 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         (beverage.editorial?.brewing?.isDryHopped ? [] : null),
       nitrogen: beverage.editorial?.brewing?.nitrogen ?? null,
       // -----------
+      color: beverage.editorial?.impressions?.color ?? null,
+      clarity: beverage.editorial?.impressions?.clarity ?? null,
+      // -----------
       price: beverage.editorial?.price?.map(normalizePrice) ?? [],
       notes: beverage.editorial?.notes ?? null,
     },

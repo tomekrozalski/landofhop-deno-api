@@ -6,6 +6,7 @@ import {
   AlcoholRelate,
   AlcoholScope,
   AlcoholUnit,
+  Clarity,
   ExtractRelate,
   ExtractUnit,
   Fermentation,
@@ -192,6 +193,9 @@ export type RequestTypes = {
     isDryHopped?: boolean;
     dryHopped?: IngredientTag[];
     nitrogen?: boolean;
+    // -----------
+    color?: string;
+    clarity?: Clarity;
     // -----------
     price?: Price[];
     notes?: string;

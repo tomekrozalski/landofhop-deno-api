@@ -6,6 +6,7 @@ import {
   AlcoholRelate,
   AlcoholUnit,
   AlcoholScope,
+  Clarity,
   ContainerColor,
   ContainerMaterial,
   ContainerType,
@@ -225,6 +226,9 @@ export type AdminDetailsOutput = {
     }[];
     dryHopped: string[] | null;
     nitrogen: boolean | null;
+    // -----------
+    color: string | null;
+    clarity: Clarity | null;
     // -----------
     price: {
       currency: string;

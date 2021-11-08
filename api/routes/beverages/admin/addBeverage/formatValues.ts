@@ -142,6 +142,10 @@ export function formatBeverage(
         dryHopped: editorial?.dryHopped,
         nitrogen: editorial?.nitrogen,
       },
+      impressions: {
+        color: editorial?.color,
+        clarity: editorial?.clarity,
+      },
       price: editorial?.price?.map((props) => ({
         ...props,
         date: new Date(props.date),
