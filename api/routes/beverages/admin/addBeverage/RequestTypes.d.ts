@@ -177,7 +177,7 @@ export type RequestTypes = {
     remark?: LanguageValue[];
     // -----------
     fermentation?: Fermentation[];
-    style?: LanguageValue[];
+    // style?: LanguageValue[];
     alcoholScope?: AlcoholScope;
     filtration?: boolean;
     pasteurization?: boolean;

@@ -239,9 +239,9 @@ export function normalizer(
       ...(beverage.producer?.brewing?.style?.length && {
         producer: beverage.producer.brewing.style,
       }),
-      ...(beverage.editorial?.brewing?.style?.length && {
-        editorial: beverage.editorial.brewing.style,
-      }),
+      // ...(beverage.editorial?.brewing?.style?.length && {
+      //   editorial: beverage.editorial.brewing.style,
+      // }),
     },
     isDryHopped: {
       ...(beverage.label.brewing?.isDryHopped &&

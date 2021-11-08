@@ -132,7 +132,7 @@ export function formatBeverage(
       },
       brewing: {
         fermentation: editorial?.fermentation,
-        style: editorial?.style,
+        // style: editorial?.style,
         alcohol: {
           scope: editorial?.alcoholScope,
         },
