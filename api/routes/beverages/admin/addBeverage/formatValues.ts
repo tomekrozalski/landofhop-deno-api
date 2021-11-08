@@ -9,6 +9,7 @@ type CommonPropsTypes = {
   _id?: string;
   shortId: string;
   added: Date;
+  updated?: Date;
 };
 
 export function formatBasics(

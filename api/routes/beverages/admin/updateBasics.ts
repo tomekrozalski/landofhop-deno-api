@@ -34,15 +34,13 @@ export async function updateBasics(ctx: RouterContext) {
       return respondWith(ctx, 404, "No beverage found");
     }
 
-    const commonProps = {
-      _id: updatingBasics._id,
-      shortId,
-      added: updatingBasics.added,
-    };
-
     const formattedBasics: BasicsWithoutId = formatBasics(
       beverageData,
-      commonProps,
+      {
+        _id: updatingBasics._id,
+        shortId,
+        added: updatingBasics.added,
+      },
       updatingBasics.coverImage
     );
 

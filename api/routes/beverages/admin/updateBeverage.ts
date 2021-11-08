@@ -43,6 +43,7 @@ export async function updateBeverage(
         _id: updatingBeverage._id,
         shortId,
         added: updatingBeverage.added,
+        updated: new Date(),
       },
       updatingBeverage.photos
     );
