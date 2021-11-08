@@ -5,6 +5,7 @@ import { Ingredient as IngredientTypes } from "/api/models/Ingredient.d.ts";
 import { Institution as InstitutionTypes } from "/api/models/Institution.d.ts";
 import { Place as PlaceTypes } from "/api/models/Place.d.ts";
 import { Session as SessionTypes } from "/api/models/Session.d.ts";
+import { Style as StyleTypes } from "/api/models/Style.d.ts";
 import { User as UserTypes } from "/api/models/User.d.ts";
 
 const client = new MongoClient();
@@ -41,6 +42,7 @@ const ingredients = db.collection<IngredientTypes>("ingredients");
 const institutions = db.collection<InstitutionTypes>("institutions");
 const places = db.collection<PlaceTypes>("places");
 const sessions = db.collection<SessionTypes>("sessions");
+const styles = db.collection<StyleTypes>("styles");
 const users = db.collection<UserTypes>("users");
 
 export {
@@ -50,5 +52,6 @@ export {
   institutions,
   places,
   sessions,
+  styles,
   users,
 };

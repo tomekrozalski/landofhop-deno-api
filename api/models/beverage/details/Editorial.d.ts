@@ -20,10 +20,10 @@ export type EditorialGeneral = {
 
 export type EditorialBrewing = {
   fermentation?: Fermentation[];
-  style?: {
+  styleTags?: {
     badge: string;
     name: LanguageValue[];
-  };
+  }[];
   alcohol?: {
     scope: AlcoholScope;
   };

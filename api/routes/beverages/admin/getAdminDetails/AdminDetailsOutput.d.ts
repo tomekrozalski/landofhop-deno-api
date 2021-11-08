@@ -208,10 +208,7 @@ export type AdminDetailsOutput = {
     }[];
     // -----------
     fermentation: Fermentation[] | null;
-    // style: {
-    //   language: string;
-    //   value: string;
-    // }[];
+    styleTags: string[] | null;
     alcoholScope: AlcoholScope | null;
     filtration: boolean | null;
     pasteurization: boolean | null;

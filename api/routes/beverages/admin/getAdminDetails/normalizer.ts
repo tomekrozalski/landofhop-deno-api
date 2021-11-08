@@ -211,8 +211,9 @@ export function normalizer(beverage: BeverageTypes): AdminDetailsOutput {
         beverage.editorial?.general?.remark?.map(normalizeLanguageValue) ?? [],
       // -----------
       fermentation: beverage.editorial?.brewing?.fermentation ?? null,
-      // style:
-      //   beverage.editorial?.brewing?.style?.map(normalizeLanguageValue) ?? [],
+      styleTags:
+        beverage.editorial?.brewing?.styleTags?.map(({ badge }) => badge) ??
+        null,
       alcoholScope: beverage.editorial?.brewing?.alcohol?.scope ?? null,
       filtration: beverage.editorial?.brewing?.filtration ?? null,
       pasteurization: beverage.editorial?.brewing?.pasteurization ?? null,

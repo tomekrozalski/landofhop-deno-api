@@ -177,7 +177,10 @@ export type RequestTypes = {
     remark?: LanguageValue[];
     // -----------
     fermentation?: Fermentation[];
-    // style?: LanguageValue[];
+    styleTags?: {
+      badge: string;
+      name: LanguageValue[];
+    }[];
     alcoholScope?: AlcoholScope;
     filtration?: boolean;
     pasteurization?: boolean;
