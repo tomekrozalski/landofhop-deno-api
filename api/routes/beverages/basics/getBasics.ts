@@ -16,7 +16,7 @@ export async function getBasics(ctx: RouterContext) {
   const translatedValues: BasicsOutput[] = [];
 
   await basics
-    .find()
+    .find({}, { noCursorTimeout: false })
     .sort({ added: -1 })
     .skip(+skip)
     .limit(+limit)

@@ -28,7 +28,10 @@ export async function getNotes(ctx: RouterContext) {
       badge: name,
       "label.general.brand.badge": brand,
     },
-    { projection: { _id: 0, notes: "$editorial.notes", updated: 1 } }
+    {
+      projection: { _id: 0, notes: "$editorial.notes", updated: 1 },
+      noCursorTimeout: false,
+    }
   );
 
   if (!data) {

@@ -15,11 +15,14 @@ export async function getDetails(ctx: RouterContext) {
   const brand = ctx.params.brand as string;
   const name = ctx.params.name as string;
 
-  const value = await beverages.findOne({
-    shortId,
-    badge: name,
-    "label.general.brand.badge": brand,
-  });
+  const value = await beverages.findOne(
+    {
+      shortId,
+      badge: name,
+      "label.general.brand.badge": brand,
+    },
+    { noCursorTimeout: false }
+  );
 
   if (!value) {
     return respondWith(ctx, 404, "No beverage found");
@@ -29,10 +32,10 @@ export async function getDetails(ctx: RouterContext) {
   const nextBasics: LinkDataOutput[] = [];
 
   await basics
-    .find({ added: { $lt: value.added } })
+    .find({ added: { $lt: value.added } }, { noCursorTimeout: false })
     .sort({ added: -1 })
     .limit(1)
-    .forEach(({ badge, brand, shortId }) => {
+    .forEach(({ badge, brand, shortId }: any) => {
       previousBasics.push({
         badge,
         brand: brand.badge,
@@ -41,10 +44,10 @@ export async function getDetails(ctx: RouterContext) {
     });
 
   await basics
-    .find({ added: { $gt: value.added } })
+    .find({ added: { $gt: value.added } }, { noCursorTimeout: false })
     .sort({ added: 1 })
     .limit(1)
-    .forEach(({ badge, brand, shortId }) => {
+    .forEach(({ badge, brand, shortId }: any) => {
       nextBasics.push({
         badge,
         brand: brand.badge,

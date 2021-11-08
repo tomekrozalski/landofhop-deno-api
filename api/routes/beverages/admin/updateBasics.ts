@@ -27,7 +27,10 @@ export async function updateBasics(ctx: RouterContext) {
         badge: name,
         "brand.badge": brand,
       },
-      { projection: { _id: 0, added: 1, coverImage: 1 } }
+      {
+        projection: { _id: 0, added: 1, coverImage: 1 },
+        noCursorTimeout: false,
+      }
     );
 
     if (!updatingBasics) {

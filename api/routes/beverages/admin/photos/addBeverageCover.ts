@@ -75,7 +75,10 @@ export async function addBeverageCover(
         badge,
         "label.general.brand.badge": brand,
       },
-      { projection: { _id: 0, photos: "$editorial.photos", updated: 1 } }
+      {
+        projection: { _id: 0, photos: "$editorial.photos", updated: 1 },
+        noCursorTimeout: false,
+      }
     );
 
     if (!updatedBeverage) {

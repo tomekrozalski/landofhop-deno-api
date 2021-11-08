@@ -1,7 +1,7 @@
 import { RouterContext } from "oak";
 
 import { translate } from "/api/utils/translate.ts";
-import { deleteIfEmpty } from '/api/utils/deleteIfEmpty.ts';
+import { deleteIfEmpty } from "/api/utils/deleteIfEmpty.ts";
 import { AppLanguage } from "/api/utils/enums/AppLanguage.enum.ts";
 import { beverages } from "/db.ts";
 import type { RawData } from "./RawData.d.ts";
@@ -42,6 +42,7 @@ export async function getStats(ctx: RouterContext) {
           "label.container.type": 1,
           added: 1,
         },
+        noCursorTimeout: false,
       }
     )
     .forEach(({ added, editorial, label, producer, shortId }) => {
@@ -70,21 +71,24 @@ export async function getStats(ctx: RouterContext) {
           type: label.container.type,
         },
         added,
-      }
+      };
 
-      deleteIfEmpty([
-        "fermentation.label",
-        "fermentation.producer",
-        "fermentation.editorial",
-        "fermentation",
-        "extract.label",
-        "extract.producer",
-        "extract",
-        "alcohol.label",
-        "alcohol.producer",
-        "alcohol.editorial",
-        "alcohol",
-      ], data);
+      deleteIfEmpty(
+        [
+          "fermentation.label",
+          "fermentation.producer",
+          "fermentation.editorial",
+          "fermentation",
+          "extract.label",
+          "extract.producer",
+          "extract",
+          "alcohol.label",
+          "alcohol.producer",
+          "alcohol.editorial",
+          "alcohol",
+        ],
+        data
+      );
 
       rawData.push(data);
     });

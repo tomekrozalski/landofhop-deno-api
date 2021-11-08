@@ -8,7 +8,7 @@ export async function getPlaces(ctx: RouterContext) {
   const data: PlaceEssence[] = [];
 
   await places
-    .find()
+    .find({}, { noCursorTimeout: false })
     .forEach(({ city, country, institution, location, shortId }) => {
       data.push({
         city,

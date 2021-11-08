@@ -17,6 +17,7 @@ export async function getInstitutions(ctx: RouterContext) {
           shortId: 1,
           website: 1,
         },
+        noCursorTimeout: false,
       }
     )
     .toArray();

@@ -10,11 +10,14 @@ export async function getAdminDetails(ctx: RouterContext) {
   const brand = ctx.params.brand as string;
   const name = ctx.params.name as string;
 
-  const value = await beverages.findOne({
-    shortId,
-    badge: name,
-    "label.general.brand.badge": brand,
-  });
+  const value = await beverages.findOne(
+    {
+      shortId,
+      badge: name,
+      "label.general.brand.badge": brand,
+    },
+    { noCursorTimeout: false }
+  );
 
   if (!value) {
     return respondWith(ctx, 404, "No beverage found");

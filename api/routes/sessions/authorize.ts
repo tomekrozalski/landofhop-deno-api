@@ -9,7 +9,7 @@ import { users } from "/db.ts";
 export async function authorize(ctx: RouterContext) {
   const result = ctx.request.body();
   const { email, password } = await result.value;
-  const user = await users.findOne({ email });
+  const user = await users.findOne({ email }, { noCursorTimeout: false });
 
   if (!user) {
     return respondWith(ctx, 400, "Authentication failed");

@@ -21,7 +21,10 @@ export async function removeBeverage(ctx: RouterContext) {
         badge: name,
         "label.general.brand.badge": brand,
       },
-      { projection: { _id: 0, added: 1, photos: "$editorial.photos" } }
+      {
+        projection: { _id: 0, added: 1, photos: "$editorial.photos" },
+        noCursorTimeout: false,
+      }
     );
 
   if (!beverageToRemove) {

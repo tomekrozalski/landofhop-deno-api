@@ -28,10 +28,13 @@ export async function authenticate(
         return respondWith(ctx, 403, "Incorrect access token provided");
       }
 
-      const session = await sessions.findOne({
-        sessionToken: payload.sessionToken,
-        userId: new Bson.ObjectId(payload.userId),
-      });
+      const session = await sessions.findOne(
+        {
+          sessionToken: payload.sessionToken as string,
+          userId: new Bson.ObjectId(payload.userId),
+        },
+        { noCursorTimeout: false }
+      );
 
       if (session?.valid) {
         return next();
@@ -48,9 +51,12 @@ export async function authenticate(
         return respondWith(ctx, 403, "Incorrect refresh token provided");
       }
 
-      const session = await sessions.findOne({
-        sessionToken: payload.sessionToken,
-      });
+      const session = await sessions.findOne(
+        {
+          sessionToken: payload.sessionToken as string,
+        },
+        { noCursorTimeout: false }
+      );
 
       if (session?.valid) {
         const newSessionToken = await updateSession(ctx, {

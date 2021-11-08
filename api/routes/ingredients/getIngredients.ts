@@ -16,6 +16,7 @@ export async function getIngredients(ctx: RouterContext) {
           type: 1,
           parent: 1,
         },
+        noCursorTimeout: false,
       }
     )
     .toArray();

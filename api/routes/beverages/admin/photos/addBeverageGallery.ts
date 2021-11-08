@@ -39,7 +39,10 @@ export async function addBeverageGallery(
         badge,
         "label.general.brand.badge": brand,
       },
-      { projection: { _id: 0, photos: "$editorial.photos", updated: 1 } }
+      {
+        projection: { _id: 0, photos: "$editorial.photos", updated: 1 },
+        noCursorTimeout: false,
+      }
     );
 
     if (!beverageToUpdate) {
@@ -88,7 +91,10 @@ export async function addBeverageGallery(
         badge,
         "label.general.brand.badge": brand,
       },
-      { projection: { _id: 0, photos: "$editorial.photos", updated: 1 } }
+      {
+        projection: { _id: 0, photos: "$editorial.photos", updated: 1 },
+        noCursorTimeout: false,
+      }
     );
 
     if (!updatedBeverage) {

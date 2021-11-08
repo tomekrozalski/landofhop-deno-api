@@ -20,7 +20,10 @@ export async function getPhotosData(ctx: RouterContext) {
       badge: name,
       "label.general.brand.badge": brand,
     },
-    { projection: { _id: 0, photos: "$editorial.photos", updated: 1 } }
+    {
+      projection: { _id: 0, photos: "$editorial.photos", updated: 1 },
+      noCursorTimeout: false,
+    }
   );
 
   if (!data) {

@@ -14,22 +14,22 @@ await client.connect({
   tls: true,
   servers: [
     {
-      host: "landofhop-shard-00-00.ku9ye.mongodb.net",
-      port: 27017,
+      host: Deno.env.get("MONGODB_SHARD_0") as string,
+      port: Number(Deno.env.get("MONGODB_SHARD_PORT")),
     },
     {
-      host: "landofhop-shard-00-01.ku9ye.mongodb.net",
-      port: 27017,
+      host: Deno.env.get("MONGODB_SHARD_1") as string,
+      port: Number(Deno.env.get("MONGODB_SHARD_PORT")),
     },
     {
-      host: "landofhop-shard-00-02.ku9ye.mongodb.net",
-      port: 27017,
+      host: Deno.env.get("MONGODB_SHARD_2") as string,
+      port: Number(Deno.env.get("MONGODB_SHARD_PORT")),
     },
   ],
   credential: {
     username: Deno.env.get("MONGODB_USERNAME"),
     password: Deno.env.get("MONGODB_PASSWORD"),
-    db: "admin",
+    db: "landofhop",
     mechanism: "SCRAM-SHA-1",
   },
 });

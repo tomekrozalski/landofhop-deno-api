@@ -30,7 +30,10 @@ export async function updateBeverage(
         badge: name,
         "label.general.brand.badge": brand,
       },
-      { projection: { added: 1, photos: "$editorial.photos" } }
+      {
+        projection: { added: 1, photos: "$editorial.photos" },
+        noCursorTimeout: false,
+      }
     );
 
     if (!updatingBeverage) {
