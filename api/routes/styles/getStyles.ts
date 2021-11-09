@@ -15,6 +15,7 @@ export async function getStyles(ctx: RouterContext) {
           _id: 0,
           badge: 1,
           name: 1,
+          group: 1,
         },
         noCursorTimeout: false,
       }

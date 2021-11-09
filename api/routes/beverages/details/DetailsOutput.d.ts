@@ -131,6 +131,12 @@ export type DetailsOutput = {
     producer?: LanguageValue[];
     editorial?: LanguageValue[];
   };
+  styleTags?: {
+    editorial: {
+      badge: string;
+      name: LanguageValue;
+    }[];
+  };
   isDryHopped?: {
     label?: boolean;
     producer?: boolean;

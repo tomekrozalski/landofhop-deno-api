@@ -239,10 +239,15 @@ export function normalizer(
       ...(beverage.producer?.brewing?.style?.length && {
         producer: beverage.producer.brewing.style,
       }),
-      // ...(beverage.editorial?.brewing?.style?.length && {
-      //   editorial: beverage.editorial.brewing.style,
-      // }),
     },
+    ...(beverage.editorial?.brewing?.styleTags && {
+      styleTags: {
+        editorial: beverage.editorial.brewing.styleTags.map((props) => ({
+          ...props,
+          name: translate(props.name, desiredLanguage),
+        })),
+      },
+    }),
     isDryHopped: {
       ...(beverage.label.brewing?.isDryHopped &&
         !beverage.label.brewing?.dryHopped?.length && { label: true }),
@@ -477,6 +482,7 @@ export function normalizer(
       "isAged",
       "aged",
       "style",
+      "styleTags",
       "isDryHopped",
       "dryHopped",
       "hopRate",
