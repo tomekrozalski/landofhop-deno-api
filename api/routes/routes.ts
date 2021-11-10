@@ -26,6 +26,7 @@ import { getIngredients } from "./ingredients/getIngredients.ts";
 import { addIngredient } from "./ingredients/addIngredient.ts";
 import { getStyles } from "./styles/getStyles.ts";
 import { addStyle } from "./styles/addStyle.ts";
+import { addBeverageCap } from "./beverages/admin/photos/addBeverageCap.ts";
 
 const router = new Router();
 
@@ -46,11 +47,7 @@ router
   .get("/admin/institution", authenticate, getInstitutions)
   .post("/admin/institution", authenticate, addInstitution, getInstitutions)
   .post("/admin/beverage", authenticate, addBeverage)
-  .get(
-    "/admin/beverage/photos/:shortId/:brand/:badge",
-    authenticate,
-    getPhotosData
-  )
+  .get("/admin/beverage/photos/:shortId", authenticate, getPhotosData)
   .post("/admin/beverage/cover", authenticate, addBeverageCover)
   .delete("/admin/beverage/:shortId/:brand/:name", authenticate, removeBeverage)
   .post("/admin/beverage/gallery", authenticate, addBeverageGallery)
@@ -66,6 +63,7 @@ router
   .get("/admin/ingredient", authenticate, getIngredients)
   .post("/admin/ingredient", authenticate, addIngredient, getIngredients)
   .get("/admin/style", authenticate, getStyles)
-  .post("/admin/style", authenticate, addStyle, getStyles);
+  .post("/admin/style", authenticate, addStyle, getStyles)
+  .post("/admin/beverage/cap", authenticate, addBeverageCap);
 
 export default router;
