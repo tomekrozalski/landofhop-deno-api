@@ -7,15 +7,9 @@ import type { AdminDetailsOutput } from "./AdminDetailsOutput.d.ts";
 
 export async function getAdminDetails(ctx: RouterContext) {
   const shortId = ctx.params.shortId as string;
-  const brand = ctx.params.brand as string;
-  const name = ctx.params.name as string;
 
   const value = await beverages.findOne(
-    {
-      shortId,
-      badge: name,
-      "label.general.brand.badge": brand,
-    },
+    { shortId },
     { noCursorTimeout: false }
   );
 

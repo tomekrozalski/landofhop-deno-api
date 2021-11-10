@@ -2,13 +2,10 @@ import { RouterContext } from "oak";
 import { streamFromMultipart } from "multipart-stream";
 
 import { beverages } from "/db.ts";
-import type { EditorialPhotos } from "/api/models/beverage/details/Editorial.d.ts";
+import { getPhotosDataByShortId } from "/api/routes/beverages/admin/getPhotosData.ts";
 import { respondWith } from "/api/utils/respondWith.ts";
 
-export async function addBeverageGallery(
-  ctx: RouterContext,
-  next: () => Promise<unknown>
-) {
+export async function addBeverageGallery(ctx: RouterContext) {
   const body = await ctx.request.body({ type: "form-data" });
   const data: any = await body.value.read();
   const { badge, brand, shortId } = data.fields;
@@ -28,28 +25,8 @@ export async function addBeverageGallery(
       }
     );
 
-    const beverageToUpdate:
-      | {
-          photos?: EditorialPhotos;
-          updated?: Date;
-        }
-      | undefined = await beverages.findOne(
-      {
-        shortId,
-        badge,
-        "label.general.brand.badge": brand,
-      },
-      {
-        projection: { _id: 0, photos: "$editorial.photos", updated: 1 },
-        noCursorTimeout: false,
-      }
-    );
-
-    if (!beverageToUpdate) {
-      return respondWith(ctx, 404, "No beverage found");
-    }
-
-    const removecount = beverageToUpdate.photos?.gallery?.toString() ?? "0";
+    const beverageToUpdate = await getPhotosDataByShortId(shortId);
+    const removecount = beverageToUpdate.gallery?.toString() ?? "0";
 
     const response = await fetch(
       `${Deno.env.get("IMAGES_API")}/beverage/add-gallery`,
@@ -67,11 +44,7 @@ export async function addBeverageGallery(
     const { outlines } = await response.json();
 
     await beverages.updateOne(
-      {
-        shortId,
-        badge,
-        "label.general.brand.badge": brand,
-      },
+      { shortId },
       {
         $set: {
           "editorial.photos.gallery": data.files.length,
@@ -80,30 +53,8 @@ export async function addBeverageGallery(
       }
     );
 
-    const updatedBeverage:
-      | {
-          photos?: EditorialPhotos;
-          updated?: Date;
-        }
-      | undefined = await beverages.findOne(
-      {
-        shortId,
-        badge,
-        "label.general.brand.badge": brand,
-      },
-      {
-        projection: { _id: 0, photos: "$editorial.photos", updated: 1 },
-        noCursorTimeout: false,
-      }
-    );
-
-    if (!updatedBeverage) {
-      return respondWith(ctx, 404, "No beverage found");
-    }
-
-    const formattedData: EditorialPhotos | {} = updatedBeverage.photos ?? {};
-
-    ctx.response.body = formattedData;
+    const updatedBeverage = await getPhotosDataByShortId(shortId);
+    ctx.response.body = updatedBeverage;
   } catch (err) {
     return respondWith(ctx, 500, "Something went wrong", err.message);
   }

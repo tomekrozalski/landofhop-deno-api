@@ -19,15 +19,9 @@ type RawData = {
 export async function getNotes(ctx: RouterContext) {
   const language = ctx.params.language as AppLanguage;
   const shortId = ctx.params.shortId as string;
-  const brand = ctx.params.brand as string;
-  const name = ctx.params.name as string;
 
   const data: RawData | undefined = await beverages.findOne(
-    {
-      shortId,
-      badge: name,
-      "label.general.brand.badge": brand,
-    },
+    { shortId },
     {
       projection: { _id: 0, notes: "$editorial.notes", updated: 1 },
       noCursorTimeout: false,

@@ -11,25 +11,12 @@ export async function updateBeverage(
   next: () => Promise<unknown>
 ) {
   const shortId = ctx.params.shortId as string;
-  const brand = ctx.params.brand as string;
-  const name = ctx.params.name as string;
-
   const result = ctx.request.body();
   const beverageData: RequestTypes = await result.value;
 
   try {
-    type BeverageData = {
-      _id: string;
-      added: Date;
-      photos?: EditorialPhotos;
-    };
-
-    const updatingBeverage: BeverageData | undefined = await beverages.findOne(
-      {
-        shortId,
-        badge: name,
-        "label.general.brand.badge": brand,
-      },
+    const updatingBeverage = await beverages.findOne(
+      { shortId },
       {
         projection: { added: 1, photos: "$editorial.photos" },
         noCursorTimeout: false,
@@ -48,7 +35,7 @@ export async function updateBeverage(
         added: updatingBeverage.added,
         updated: new Date(),
       },
-      updatingBeverage.photos
+      updatingBeverage.editorial?.photos
     );
 
     // @ToDo: should be replaced by replaceOne, add brand and name

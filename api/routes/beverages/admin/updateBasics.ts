@@ -1,6 +1,5 @@
 import { RouterContext } from "oak";
 import { basics } from "/db.ts";
-import type { BasicsCoverImage } from "/api/models/beverage/Basics.d.ts";
 import type { BasicsWithoutId } from "/api/models/beverage/Basics.d.ts";
 import { respondWith } from "/api/utils/respondWith.ts";
 import type { RequestTypes } from "/api/routes/beverages/admin/addBeverage/RequestTypes.d.ts";
@@ -8,25 +7,12 @@ import { formatBasics } from "/api/routes/beverages/admin/addBeverage/formatValu
 
 export async function updateBasics(ctx: RouterContext) {
   const shortId = ctx.params.shortId as string;
-  const brand = ctx.params.brand as string;
-  const name = ctx.params.name as string;
-
   const result = ctx.request.body();
   const beverageData: RequestTypes = await result.value;
 
   try {
-    type BeverageData = {
-      _id: string;
-      added: Date;
-      coverImage?: BasicsCoverImage;
-    };
-
-    const updatingBasics: BeverageData | undefined = await basics.findOne(
-      {
-        shortId,
-        badge: name,
-        "brand.badge": brand,
-      },
+    const updatingBasics = await basics.findOne(
+      { shortId },
       {
         projection: { _id: 0, added: 1, coverImage: 1 },
         noCursorTimeout: false,
@@ -47,7 +33,7 @@ export async function updateBasics(ctx: RouterContext) {
       updatingBasics.coverImage
     );
 
-    // @ToDo: should be replaced by replaceOne, add brand and name
+    // @ToDo: should be replaced by replaceOne?
     await basics.findAndModify({ shortId }, { update: formattedBasics });
 
     return respondWith(ctx, 200, "Beverage was successfully updated");

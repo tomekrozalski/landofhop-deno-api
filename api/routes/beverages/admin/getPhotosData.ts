@@ -1,24 +1,29 @@
 import { RouterContext } from "oak";
 
-import type { EditorialPhotos } from "/api/models/beverage/details/Editorial.d.ts";
-import { ContainerType } from "/api/models/beverage/enums.ts";
 import { beverages } from "/db.ts";
 import { respondWith } from "/api/utils/respondWith.ts";
+
+export async function getPhotosDataByShortId(shortId: string) {
+  const data = await beverages.findOne({ shortId }, { noCursorTimeout: false });
+
+  if (!data) {
+    throw new Error("No beverage found");
+  }
+
+  return {
+    ...(data.editorial?.photos && { ...data.editorial.photos }),
+    type: data.label.container.type,
+  };
+}
 
 export async function getPhotosData(ctx: RouterContext) {
   const shortId = ctx.params.shortId as string;
 
-  const data = await beverages.findOne({ shortId }, { noCursorTimeout: false });
+  try {
+    const data = await getPhotosDataByShortId(shortId);
 
-  if (!data) {
-    return respondWith(ctx, 404, "No beverage found");
+    ctx.response.body = data;
+  } catch (e) {
+    return respondWith(ctx, 500, e.message);
   }
-
-  const formattedData: (EditorialPhotos & { type: ContainerType }) | {} =
-    {
-      ...(data.editorial?.photos && { ...data.editorial.photos }),
-      type: data.label.container.type,
-    } ?? {};
-
-  ctx.response.body = formattedData;
 }

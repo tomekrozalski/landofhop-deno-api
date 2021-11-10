@@ -27,17 +27,14 @@ import { addIngredient } from "./ingredients/addIngredient.ts";
 import { getStyles } from "./styles/getStyles.ts";
 import { addStyle } from "./styles/addStyle.ts";
 import { addBeverageCap } from "./beverages/admin/photos/addBeverageCap.ts";
+import { deleteBeverageCap } from "./beverages/admin/photos/deleteBeverageCap.ts";
 
 const router = new Router();
 
 router
   .get("/basics/:language?/:skip?/:limit?", getBasics)
-  .get("/details/:language/:shortId/:brand/:name", getDetails)
-  .get(
-    "/admin/beverage/notes/:language/:shortId/:brand/:name",
-    authenticate,
-    getNotes
-  )
+  .get("/details/:language/:shortId", getDetails)
+  .get("/admin/beverage/notes/:language/:shortId", authenticate, getNotes)
   .get("/beverage/total", getTotal)
   .get("/beverage/search/:language/:phrase", searchByPhrase)
   .get("/beverage/stats/:language", getStats)
@@ -49,21 +46,17 @@ router
   .post("/admin/beverage", authenticate, addBeverage)
   .get("/admin/beverage/photos/:shortId", authenticate, getPhotosData)
   .post("/admin/beverage/cover", authenticate, addBeverageCover)
-  .delete("/admin/beverage/:shortId/:brand/:name", authenticate, removeBeverage)
+  .delete("/admin/beverage/:shortId", authenticate, removeBeverage)
   .post("/admin/beverage/gallery", authenticate, addBeverageGallery)
-  .get("/admin/details/:shortId/:brand/:name", authenticate, getAdminDetails)
-  .put(
-    "/admin/beverage/:shortId/:brand/:name",
-    authenticate,
-    updateBeverage,
-    updateBasics
-  )
+  .get("/admin/details/:shortId", authenticate, getAdminDetails)
+  .put("/admin/beverage/:shortId", authenticate, updateBeverage, updateBasics)
   .get("/admin/place", authenticate, getPlaces)
   .post("/admin/place", authenticate, addPlace, getPlaces)
   .get("/admin/ingredient", authenticate, getIngredients)
   .post("/admin/ingredient", authenticate, addIngredient, getIngredients)
   .get("/admin/style", authenticate, getStyles)
   .post("/admin/style", authenticate, addStyle, getStyles)
-  .post("/admin/beverage/cap", authenticate, addBeverageCap);
+  .post("/admin/beverage/cap", authenticate, addBeverageCap)
+  .delete("/admin/beverage/cap/:shortId", authenticate, deleteBeverageCap);
 
 export default router;

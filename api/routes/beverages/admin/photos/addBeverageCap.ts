@@ -2,24 +2,21 @@ import { RouterContext } from "oak";
 import { streamFromMultipart } from "multipart-stream";
 
 import { beverages } from "/db.ts";
-import type { EditorialPhotos } from "/api/models/beverage/details/Editorial.d.ts";
+import { getPhotosDataByShortId } from "/api/routes/beverages/admin/getPhotosData.ts";
 import { respondWith } from "/api/utils/respondWith.ts";
 
-export async function addBeverageCap(
-  ctx: RouterContext,
-  next: () => Promise<unknown>
-) {
+export async function addBeverageCap(ctx: RouterContext) {
   const body = await ctx.request.body({ type: "form-data" });
-  const data: any = await body.value.read();
-  const { badge, brand, shortId } = data.fields;
+  const bodyData: any = await body.value.read();
+  const { badge, brand, shortId } = bodyData.fields;
 
   try {
     const [stream, boundary] = streamFromMultipart(
       async (multipartWriter: any) => {
-        const img = await Deno.open(data.files[0].filename);
+        const img = await Deno.open(bodyData.files[0].filename);
         await multipartWriter.writeFile(
-          data.files[0].name,
-          data.files[0].originalName,
+          bodyData.files[0].name,
+          bodyData.files[0].originalName,
           img
         );
         img.close();
@@ -36,34 +33,13 @@ export async function addBeverageCap(
     });
 
     await beverages.updateOne(
-      { shortId, badge, "label.general.brand.badge": brand },
+      { shortId },
       { $set: { "editorial.photos.cap": true } }
     );
 
-    const updatedBeverage:
-      | {
-          photos?: EditorialPhotos;
-          updated?: Date;
-        }
-      | undefined = await beverages.findOne(
-      {
-        shortId,
-        badge,
-        "label.general.brand.badge": brand,
-      },
-      {
-        projection: { _id: 0, photos: "$editorial.photos", updated: 1 },
-        noCursorTimeout: false,
-      }
-    );
+    const data = await getPhotosDataByShortId(shortId);
 
-    if (!updatedBeverage) {
-      return respondWith(ctx, 404, "No beverage found");
-    }
-
-    const formattedData: EditorialPhotos | {} = updatedBeverage.photos ?? {};
-
-    ctx.response.body = formattedData;
+    ctx.response.body = data;
   } catch (err) {
     return respondWith(ctx, 500, "Something went wrong", err.message);
   }
