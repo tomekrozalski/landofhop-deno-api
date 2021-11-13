@@ -7,7 +7,7 @@ import { beverages } from "/db.ts";
 import type { RawData } from "./RawData.d.ts";
 import { normalizer } from "./normalizer.ts";
 
-export async function getStats(ctx: RouterContext) {
+export async function getGeneralStats(ctx: RouterContext) {
   const language = ctx.params.language as AppLanguage;
 
   const rawData: RawData[] = [];

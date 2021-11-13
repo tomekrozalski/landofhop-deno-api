@@ -18,12 +18,14 @@ export type EditorialGeneral = {
   remark?: LanguageValue[];
 };
 
+export type StyleTag = {
+  badge: string;
+  name: LanguageValue[];
+};
+
 export type EditorialBrewing = {
   fermentation?: Fermentation[];
-  styleTags?: {
-    badge: string;
-    name: LanguageValue[];
-  }[];
+  styleTags?: StyleTag[];
   alcohol?: {
     scope: AlcoholScope;
   };

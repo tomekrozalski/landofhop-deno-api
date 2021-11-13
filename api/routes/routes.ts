@@ -6,7 +6,7 @@ import { getDetails } from "./beverages/details/getDetails.ts";
 import { getTotal } from "./beverages/getTotal.ts";
 import { searchByPhrase } from "./beverages/searchByPhrase.ts";
 import { getNotes } from "./beverages/admin/getNotes.ts";
-import { getStats } from "./beverages/stats/getStats.ts";
+import { getGeneralStats } from "./beverages/stats/general/getGeneralStats.ts";
 import { authorize } from "./sessions/authorize.ts";
 import { unauthorize } from "./sessions/unauthorize.ts";
 import { verifyToken } from "./sessions/verifyToken.ts";
@@ -28,6 +28,7 @@ import { getStyles } from "./styles/getStyles.ts";
 import { addStyle } from "./styles/addStyle.ts";
 import { addBeverageCap } from "./beverages/admin/photos/addBeverageCap.ts";
 import { deleteBeverageCap } from "./beverages/admin/photos/deleteBeverageCap.ts";
+import { getStylesStats } from "./beverages/stats/styles/getStylesStats.ts";
 
 const router = new Router();
 
@@ -37,7 +38,7 @@ router
   .get("/admin/beverage/notes/:language/:shortId", authenticate, getNotes)
   .get("/beverage/total", getTotal)
   .get("/beverage/search/:language/:phrase", searchByPhrase)
-  .get("/beverage/stats/:language", getStats)
+  .get("/stats/general/:language", getGeneralStats)
   .post("/authorize", authorize)
   .get("/unauthorize", unauthorize)
   .get("/verifyToken", authenticate, verifyToken)
@@ -57,6 +58,7 @@ router
   .get("/admin/style", authenticate, getStyles)
   .post("/admin/style", authenticate, addStyle, getStyles)
   .post("/admin/beverage/cap", authenticate, addBeverageCap)
-  .delete("/admin/beverage/cap/:shortId", authenticate, deleteBeverageCap);
+  .delete("/admin/beverage/cap/:shortId", authenticate, deleteBeverageCap)
+  .get("/stats/styles/:language", getStylesStats);
 
 export default router;
