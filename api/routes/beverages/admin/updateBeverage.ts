@@ -15,7 +15,13 @@ export async function updateBeverage(
   const beverageData: RequestTypes = await result.value;
 
   try {
-    const updatingBeverage = await beverages.findOne(
+    const updatingBeverage:
+      | {
+          _id: string;
+          added: Date;
+          photos?: EditorialPhotos;
+        }
+      | undefined = await beverages.findOne(
       { shortId },
       {
         projection: { added: 1, photos: "$editorial.photos" },
@@ -35,7 +41,7 @@ export async function updateBeverage(
         added: updatingBeverage.added,
         updated: new Date(),
       },
-      updatingBeverage.editorial?.photos
+      updatingBeverage.photos
     );
 
     // @ToDo: should be replaced by replaceOne, add brand and name
