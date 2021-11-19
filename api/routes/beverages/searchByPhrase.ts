@@ -2,7 +2,6 @@ import { RouterContext } from "oak";
 import format from "date-fns/format";
 
 import { translate } from "/api/utils/translate.ts";
-import { Beverage } from "/models/beverage/details/Beverage.d.ts";
 import { AppLanguage } from "/api/utils/enums/AppLanguage.enum.ts";
 import { DateFormat } from "/api/utils/enums/DateFormat.enum.ts";
 import { beverages } from "/db.ts";
@@ -15,8 +14,7 @@ export async function searchByPhrase(ctx: RouterContext) {
 
   const foundArr: BasicsOutput[] = [];
 
-  function formatValues({ added, badge, editorial, label, shortId }: Beverage) {
-    console.log("badge", badge);
+  function formatValues({ added, badge, editorial, label, shortId }: any) {
     foundArr.push({
       added: format(new Date(added), DateFormat[language], {}),
       badge,

@@ -29,6 +29,8 @@ import { addStyle } from "./styles/addStyle.ts";
 import { addBeverageCap } from "./beverages/admin/photos/addBeverageCap.ts";
 import { deleteBeverageCap } from "./beverages/admin/photos/deleteBeverageCap.ts";
 import { getStylesStats } from "./beverages/stats/styles/getStylesStats.ts";
+import { updateStyle } from "./styles/updateStyle.ts";
+import { updateBeverageStyle } from "./styles/updateBeverageStyle.ts";
 
 const router = new Router();
 
@@ -59,6 +61,13 @@ router
   .post("/admin/style", authenticate, addStyle, getStyles)
   .post("/admin/beverage/cap", authenticate, addBeverageCap)
   .delete("/admin/beverage/cap/:shortId", authenticate, deleteBeverageCap)
-  .get("/stats/styles/:language", getStylesStats);
+  .get("/stats/styles/:language", getStylesStats)
+  .put(
+    "/admin/style/:badge",
+    authenticate,
+    updateStyle,
+    updateBeverageStyle,
+    getStyles
+  );
 
 export default router;
