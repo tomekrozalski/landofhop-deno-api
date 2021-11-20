@@ -31,6 +31,7 @@ import { deleteBeverageCap } from "./beverages/admin/photos/deleteBeverageCap.ts
 import { getStylesStats } from "./beverages/stats/styles/getStylesStats.ts";
 import { updateStyle } from "./styles/updateStyle.ts";
 import { updateBeverageStyle } from "./styles/updateBeverageStyle.ts";
+import { getTranslatedIngredients } from "./ingredients/getTranslatedIngredients.ts";
 
 const router = new Router();
 
@@ -68,6 +69,7 @@ router
     updateStyle,
     updateBeverageStyle,
     getStyles
-  );
+  )
+  .get("/stats/ingredients/:langauge", getTranslatedIngredients);
 
 export default router;
