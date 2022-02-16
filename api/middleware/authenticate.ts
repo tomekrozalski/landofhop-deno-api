@@ -14,30 +14,36 @@ export async function authenticate(
 ) {
   try {
     const cookies = extractCookies(ctx);
+
     if (!cookies.accessToken && !cookies.refreshToken) {
       return respondWith(ctx, 401, "Unauthorized");
     }
 
     if (cookies.accessToken) {
-      const payload = await verify(
-        cookies.accessToken,
-        Deno.env.get("JWT_SECRET") as string,
-        "HS512"
-      );
-      if (!payload || !payload.userId || !payload.sessionToken) {
-        return respondWith(ctx, 403, "Incorrect access token provided");
-      }
+      try {
+        const payload = await verify(
+          cookies.accessToken,
+          Deno.env.get("JWT_SECRET") as string,
+          "HS512"
+        );
 
-      const session = await sessions.findOne(
-        {
-          sessionToken: payload.sessionToken as string,
-          userId: new Bson.ObjectId(payload.userId),
-        },
-        { noCursorTimeout: false }
-      );
+        if (!payload || !payload.userId || !payload.sessionToken) {
+          return respondWith(ctx, 403, "Incorrect access token provided");
+        }
 
-      if (session?.valid) {
-        return next();
+        const session = await sessions.findOne(
+          {
+            sessionToken: payload.sessionToken as string,
+            userId: new Bson.ObjectId(payload.userId),
+          },
+          { noCursorTimeout: false }
+        );
+
+        if (session?.valid) {
+          return next();
+        }
+      } catch (err) {
+        return respondWith(ctx, 403, "Authentication failed");
       }
     }
 
